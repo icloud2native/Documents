@@ -199,7 +199,7 @@ Tekton Pipeline中的Pipeline模型中存在三个核心术语：Step，Task和P
        istioctl apply --set profile=demo
        ```
 
-       <img src="images\image-20230106203745298.png" alt="image-20230106203745298" style="zoom:80%;" />
+       <img src="images/image-20230106203745298.png" alt="image-20230106203745298" style="zoom:80%;" />
 
     2. 将dashboard暴露
 
@@ -209,13 +209,13 @@ Tekton Pipeline中的Pipeline模型中存在三个核心术语：Step，Task和P
        kubectl edit svc istio-ingressgateway -n istio-system
        ```
 
-       <img src="images\image-20230106204746068.png" alt="image-20230106204746068" style="zoom:80%;" />
+       <img src="images/image-20230106204746068.png" alt="image-20230106204746068" style="zoom:80%;" />
 
        ```sh
        kubectl get svc -n istio-system
        ```
 
-       ![image-20230106204931631](images\image-20230106204931631.png)
+       ![image-20230106204931631](images/image-20230106204931631.png)
 
        配置gateway、virtualservice、destionrule资源配置清单
 
@@ -276,19 +276,19 @@ Tekton Pipeline中的Pipeline模型中存在三个核心术语：Step，Task和P
        kubectl apply -f 03-VirtualService-tekton-dashboard.yaml
        ```
 
-       ![image-20230106205616282](C:\Users\WangL\AppData\Roaming\Typora\typora-user-images\image-20230106205616282.png)
+       ![image-20230106205616282](images/image-20230106205616282.png)
 
        本机电脑配置域名解析
 
-       ![image-20230106205910007](images\image-20230106205910007.png)
+       ![image-20230106205910007](images/image-20230106205910007.png)
 
        修改hosts文件
 
-       ![image-20230106210219679](D:\云原生\tekton\images\image-20230106210219679.png)
+       ![image-20230106210219679](images/image-20230106210219679.png)
 
     3.  浏览器打开dashboard
 
-       ![image-20230106210352195](images\image-20230106210352195.png)
+       ![image-20230106210352195](images/image-20230106210352195.png)
 
   - [ ] **客户端工具tkn**
 
@@ -344,11 +344,11 @@ Tekton Pipeline中的Pipeline模型中存在三个核心术语：Step，Task和P
       tkn task start --showlog hello
       ```
 
-      ![image-20230107152853901](images\image-20230107152853901.png)
+      ![image-20230107152853901](images/image-20230107152853901.png)
       
     - dashboard可以看到taskrun相关信息
     
-      ![image-20230107121410954](D:\云原生\tekton\images\image-20230107121410954.png)
+      ![image-20230107121410954](images/image-20230107121410954.png)
     
     
 
@@ -391,7 +391,7 @@ tkn task start hello-params --showlog
 
 **添加自定义参数运行task**
 
-![image-20230107160808922](images\image-20230107160808922.png)
+![image-20230107160808922](images/image-20230107160808922.png)
 
 #### 2.2.2.2 Task的Step使用脚本
 
@@ -424,7 +424,7 @@ spec:
 tkn task start script --showlog
 ```
 
-![image-20230107200424305](images\image-20230107200424305.png)
+![image-20230107200424305](images/image-20230107200424305.png)
 
 #### 2.2.2.3 Task中使用多个step
 
@@ -456,7 +456,7 @@ spec:
 tkn task start mulit-step --showlog
 ```
 
-![image-20230107201508973](images\image-20230107201508973.png)
+![image-20230107201508973](images/image-20230107201508973.png)
 
 #### 2.2.2.4 Task中同时使用script和parameters
 
@@ -490,7 +490,7 @@ spec:
 tkn task start logger -p text="Welcome to Littleboy" --showlog
 ```
 
-![image-20230107202721058](images\image-20230107202721058.png)
+![image-20230107202721058](images/image-20230107202721058.png)
 
 ### 2.2.2 Pipeline使用
 
@@ -525,7 +525,7 @@ spec:
 tkn pipeline start pipeline-demo --showlog
 ```
 
-![image-20230107211638283](images\image-20230107211638283.png)
+![image-20230107211638283](images/image-20230107211638283.png)
 
 以pipelinerun资源配置清单方式
 
@@ -545,7 +545,7 @@ spec:
 kubectl apply -f 07-pipelinerun-demo.yaml
 ```
 
-<img src="images\image-20230107212311445.png" alt="image-20230107212311445" style="zoom: 80%;" />
+<img src="images/image-20230107212311445.png" alt="image-20230107212311445" style="zoom: 80%;" />
 
 
 
@@ -586,7 +586,7 @@ spec:
 
 tkn运行该pipeline
 
-![image-20230107213648261](images\image-20230107213648261.png)
+![image-20230107213648261](images/image-20230107213648261.png)
 
 #### 2.2.2.3 Pipelinerun上使用parameters
 
@@ -612,13 +612,13 @@ spec:
 kubectl apply -f 09-pipelinerun-params.yaml 
 ```
 
-![image-20230107214358418](images\image-20230107214358418.png)
+![image-20230107214358418](images/image-20230107214358418.png)
 
 #### 2.2.2.4 定义Pipeline中各task的次序
 
 - [ ] 实现下图task的执行顺序，利用runAfter控制顺序
 
-  ![image-20230107214915097](images\image-20230107214915097.png)
+  ![image-20230107214915097](images/image-20230107214915097.png)
 
 ```yaml
 apiVersion: tekton.dev/v1beta1
@@ -662,7 +662,7 @@ spec:
 tkn pipeline start pipeline-task-ordering --showlog
 ```
 
-![image-20230107215405861](images\image-20230107215405861.png)
+![image-20230107215405861](images/image-20230107215405861.png)
 
 ### 2.2.3 Workspace
 
@@ -738,7 +738,7 @@ tkn pipeline start pipeline-task-ordering --showlog
   tkn task start --showlog workspace-demo -p target="little boy" -w name=message,emptyDir=""
   ```
 
-  ![image-20230108142607766](images\image-20230108142607766.png)
+  ![image-20230108142607766](images/image-20230108142607766.png)
 
 - [ ] **在多个step中访问共享的workspace**
 
@@ -773,7 +773,7 @@ tkn pipeline start pipeline-task-ordering --showlog
   tkn task start source-lister --showlog -p git-repo="https://gitee.com/mageedu/spring-boot-helloWorld.git" -w name=source,emptyDir=""
   ```
 
-  ![image-20230108145339822](images\image-20230108145339822.png)
+  ![image-20230108145339822](images/image-20230108145339822.png)
 
 #### 2.2.3.4 在pipeline上使用workspace
 
@@ -811,7 +811,7 @@ tkn pipeline start pipeline-task-ordering --showlog
   tkn pipeline start --showlog pipeline-source-lister -p git-url="https://gitee.com/mageedu/spring-boot-helloWorld.git" -w name=codebase,emptyDir=""
   ```
 
-  ![image-20230108163614057](images\image-20230108163614057.png)
+  ![image-20230108163614057](images/image-20230108163614057.png)
 
 #### 2.2.3.5 nfs-csi driver的设置以及StorageClass创建
 
@@ -831,7 +831,7 @@ tkn pipeline start pipeline-task-ordering --showlog
   kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml -n nfs
   ```
 
-  ![image-20230108164519260](images\image-20230108164519260.png)
+  ![image-20230108164519260](images/image-20230108164519260.png)
 
 - [ ] **在k8s集群中部署nfs csi driver**
 
@@ -839,7 +839,7 @@ tkn pipeline start pipeline-task-ordering --showlog
   curl -skSL https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/v3.1.0/deploy/install-driver.sh | bash -s v3.1.0 --
   ```
 
-  ![image-20230108165414377](images\image-20230108165414377.png)
+  ![image-20230108165414377](images/image-20230108165414377.png)
 
 - [ ] **创建基于nfs的StorageClass**
 
@@ -861,7 +861,7 @@ tkn pipeline start pipeline-task-ordering --showlog
     - nfsvers=4.1
   ```
 
-  ![image-20230108165822059](images\image-20230108165822059.png)
+  ![image-20230108165822059](images/image-20230108165822059.png)
 
 - [ ] **测试创建pvc，看能否动态绑定pv**
 
@@ -869,7 +869,7 @@ tkn pipeline start pipeline-task-ordering --showlog
   kubectl create -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/pvc-nfs-csi-dynamic.yaml
   ```
 
-  ![image-20230108170025070](images\image-20230108170025070.png)
+  ![image-20230108170025070](images/image-20230108170025070.png)
 
 #### 2.2.3.6 在pipelinerun上使用workspace(PVC)
 
@@ -947,7 +947,7 @@ spec:
 tkn pipelinerun logs volume-share-run-xxx
 ```
 
-![](images\image-20230108202103846.png)
+![](images/image-20230108202103846.png)
 
 #### 2.2.3.7 实践案例之maven项目构建
 
@@ -1025,7 +1025,7 @@ tkn pipelinerun logs volume-share-run-xxx
 
   运行
 
-  ![image-20230109203301710](images\image-20230109203301710.png)
+  ![image-20230109203301710](images/image-20230109203301710.png)
 
 #### 2.2.3.8 跨Pipelerun的数据共享之volume
 
@@ -1145,11 +1145,11 @@ tkn pipelinerun logs volume-share-run-xxx
 
   - 第一次运行，查看运行时间
 
-    ![image-20230109204740859](images\image-20230109204740859.png)
+    ![image-20230109204740859](images/image-20230109204740859.png)
 
   - 第二次运行，发现时间明显缩短，cache生效
 
-    ![image-20230109211714518](images\image-20230109211714518.png)
+    ![image-20230109211714518](images/image-20230109211714518.png)
 
 #### 2.2.3.9 使用Result进行数据共享
 
@@ -1212,7 +1212,7 @@ tkn pipelinerun logs volume-share-run-xxx
   tkn task start generate-buildid  --showlog -p version="0.2"
   ```
 
-  ![image-20230109212601364](images\image-20230109212601364.png)
+  ![image-20230109212601364](images/image-20230109212601364.png)
 
 ### 2.2.4 Pipeline 高级用法
 
@@ -1363,7 +1363,7 @@ tkn pipelinerun logs volume-share-run-xxx
   - Workspace
     - 基于PVC，跨task数据共享
 
-  ![image-20230111212947246](images\image-20230111212947246.png)
+  ![image-20230111212947246](images/image-20230111212947246.png)
 
   
 
@@ -1467,7 +1467,7 @@ tkn pipelinerun logs volume-share-run-xxx
 
    1、先在一台机器上login镜像仓库，这里以dockerhub为例，将会把认证文件保存在`~/.docker/config.json`:
 
-   ![image-20230111224221682](images\image-20230111224221682.png)
+   ![image-20230111224221682](images/image-20230111224221682.png)
 
    基于config,json创建sectet，这里的secret的类型选择generic
 
@@ -1697,15 +1697,15 @@ tkn pipelinerun logs volume-share-run-xxx
 
    1. 整个pipeline执行成功
    
-      ![image-20230112092914608](images\image-20230112092914608.png)
+      ![image-20230112092914608](images/image-20230112092914608.png)
 
    2. image推送到dockerhub
    
-      ![image-20230112092951808](images\image-20230112092951808.png)
+      ![image-20230112092951808](images/image-20230112092951808.png)
    
    3. 成功在集群部署
    
-      ![image-20230112093050481](images\image-20230112093050481.png)
+      ![image-20230112093050481](images/image-20230112093050481.png)
    
 
 ## 2.3 Trigger
@@ -1723,7 +1723,7 @@ https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
 
 查看是否部署成功
 
-![image-20230112144340030](images\image-20230112144340030.png)
+![image-20230112144340030](images/image-20230112144340030.png)
 
 ### 2.3.2 Trigger 基础
 
@@ -1748,7 +1748,7 @@ https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
 
   - Interceptor
 
-    ![image-20230112171329512](images\image-20230112171329512.png)
+    ![image-20230112171329512](images/image-20230112171329512.png)
 
 #### 2.3.2.2 Triggers的关键组件
 
@@ -1780,7 +1780,7 @@ https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
   - bindings可引用一至多个独立的TriggerBinding资源，也可以内联定义；
   - interceptors的定义，，是引用ClusterInterceptor定义出的过滤规则
 
-  ![image-20230112174530351](images\image-20230112174530351.png)
+  ![image-20230112174530351](images/image-20230112174530351.png)
 
 #### 2.3.2.4 Trigger、TriggerTemplate、TriggerBinding资源规范
 
@@ -1799,7 +1799,7 @@ https://tekton.dev/docs/triggers/interceptors/#gitlab-interceptors
 
   - [ ]  **示例**
 
-    ![image-20230112175900392](images\image-20230112175900392.png)
+    ![image-20230112175900392](images/image-20230112175900392.png)
 
   - [ ] **TriggerBinding的资源规范**
 
@@ -1880,7 +1880,7 @@ https://tekton.dev/docs/triggers/interceptors/#gitlab-interceptors
       } 
       ```
       
-      ![image-20230112180525436](images\image-20230112180525436.png)
+      ![image-20230112180525436](images/image-20230112180525436.png)
   
   - [ ] **ClusterTriggerBinding CRD**
   
@@ -1897,7 +1897,7 @@ https://tekton.dev/docs/triggers/interceptors/#gitlab-interceptors
   
   - [ ] **Trigger示例**
   
-    ![image-20230112181531621](images\image-20230112181531621.png)
+    ![image-20230112181531621](images/image-20230112181531621.png)
 
 ### 2.3.2 Tekton Trigger 实战案例
 
@@ -2346,19 +2346,19 @@ kubectl apply -f .
 
 8、访问gitlab
 
-![image-20230112203643482](images\image-20230112203643482.png)
+![image-20230112203643482](images/image-20230112203643482.png)
 
 9、修改settings-Network
 
-![image-20230112203859929](images\image-20230112203859929.png)
+![image-20230112203859929](images/image-20230112203859929.png)
 
 10、修改setting-general
 
-![image-20230112204152556](images\image-20230112204152556.png)
+![image-20230112204152556](images/image-20230112204152556.png)
 
 11、新建项目--导入项目
 
-![image-20230112204620197](images\image-20230112204620197.png)
+![image-20230112204620197](images/image-20230112204620197.png)
 
 
 
@@ -2546,25 +2546,25 @@ kubectl apply -f .
 kubectl get pods && kubectl get svc
 ```
 
-![image-20230112212828671](images\image-20230112212828671.png)
+![image-20230112212828671](images/image-20230112212828671.png)
 
 把eventlistener的svc添加到gitlab的webhook上，因为eventlistener的8080端口，接受事件。具体操作：
 
-![image-20230112213436896](images\image-20230112213436896.png)
+![image-20230112213436896](images/image-20230112213436896.png)
 
 取消启用SSL认证，点击add webhook
 
-![image-20230112213554784](images\image-20230112213554784.png)
+![image-20230112213554784](images/image-20230112213554784.png)
 
 8、测试
 
 - [ ] 推送Push event
 
-  ![image-20230112213742416](images\image-20230112213742416.png)
+  ![image-20230112213742416](images/image-20230112213742416.png)
 
 ​       发现触发taskrun的运行
 
-​       ![image-20230112213901346](images\image-20230112213901346.png)
+​       ![image-20230112213901346](images/image-20230112213901346.png)
 
 触发其他两中event，同样可以成功
 
@@ -2581,7 +2581,7 @@ GitHub 上别人案例：https://github.com/open-toolchain/hello-tekton/blob/mas
   1. 用户推送代码至项目仓库
   2. 由Push Hook 自东触发pipeline的流水线的执行
 
-  ![image-20230113164026230](images\image-20230113164026230.png)
+  ![image-20230113164026230](images/image-20230113164026230.png)
 
 ### 2.4.2 项目实现
 
@@ -3037,11 +3037,11 @@ spec:
 kubectl apply -f .
 ```
 
-![image-20230113172916650](images\image-20230113172916650.png)
+![image-20230113172916650](images/image-20230113172916650.png)
 
 10、在gitlab上增加eventlistener的webhook, 取消SSL验证
 
-![image-20230113173218082](images\image-20230113173218082.png)
+![image-20230113173218082](images/image-20230113173218082.png)
 
 ### 2.4.3 项目测试
 
@@ -3049,17 +3049,17 @@ kubectl apply -f .
 
 1、gitlab上已经push 到main分支：
 
-![image-20230113174046921](images\image-20230113174046921.png)
+![image-20230113174046921](images/image-20230113174046921.png)
 
 2、查看是否触发tekton的pipeline执行
 
-![image-20230113174154178](images\image-20230113174154178.png)
+![image-20230113174154178](images/image-20230113174154178.png)
 
 3、查看dockerhub以及kubernetes是否部署成功
 
-![image-20230113174319577](images\image-20230113174319577.png)
+![image-20230113174319577](images/image-20230113174319577.png)
 
-![image-20230113174356172](images\image-20230113174356172.png)
+![image-20230113174356172](images/image-20230113174356172.png)
 
 # 3 ArgoCD
 
@@ -3082,7 +3082,7 @@ kubectl apply -f .
   - Application Controlller负责将repo定义的Application运行于一个特定目标i的Kubernetes Cluster上；
   - Application Controller持续监视，对比Application的期望状态和实际状态，并确保实际状态和期望状态一致
 
-![image-20230116152940426](images\image-20230116152940426.png)
+![image-20230116152940426](images/image-20230116152940426.png)
 
 ### 3.1.2 ArgoCD主要功能
 
@@ -3107,7 +3107,7 @@ kubectl apply -f .
     1. source: 定义从何处获取配置文件，包括repoUrL和配置文件所在的目录
     2. destination：定义这组资源的配置文件中定义的对象应该创建运行于何处。
 
-    ![image-20230116160021773](images\image-20230116160021773.png)
+    ![image-20230116160021773](images/image-20230116160021773.png)
 
   - 支持的配置管理工具
 
@@ -3133,13 +3133,13 @@ kubectl apply -f .
   - 主要用于Application彼此隔离，并且支持在project内进行细粒度的权限管控
   - 支持为内部Application上的Source和Destionation分别指定各自的黑名单
   
-  ![image-20230116161330979](images\image-20230116161330979.png)
+  ![image-20230116161330979](images/image-20230116161330979.png)
 
 
 
 ### 3.1.4 ArgoCD架构
 
-![image-20230116161500538](images\image-20230116161500538.png)
+![image-20230116161500538](images/image-20230116161500538.png)
 
 ### 3.1.5 ArgoCD组件
 
@@ -3176,7 +3176,7 @@ kubectl apply -f .
   - 可选组件，需要单独部署，由一个控制器和一组CRD组成
   - 与Ingress Controller和ServiceMesh集成，为Application提供高级部署功能，如blue-gree、canary、canary analysis和渐进式交付
 
-  ![image-20230116164224530](images\image-20230116164224530.png)
+  ![image-20230116164224530](images/image-20230116164224530.png)
 
 
 ## 3.2 ArgoCD部署
@@ -3216,7 +3216,7 @@ ArgoCD部署官网：https://argo-cd.readthedocs.io/en/stable/getting_started/
      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
      ```
 
-     ![image-20230117165759139](images\image-20230117165759139.png)
+     ![image-20230117165759139](images/image-20230117165759139.png)
 
   3. 在管理节点上安装ArgoCD CLI
 
@@ -3279,7 +3279,7 @@ ArgoCD部署官网：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
      浏览器访问argocd.icloud2native.com：
 
-     ![image-20230117171834490](images\image-20230117171834490.png)
+     ![image-20230117171834490](images/image-20230117171834490.png)
 
   5. 使用ArgoCD CLI 或Web UI完成登录
 
@@ -3296,7 +3296,7 @@ ArgoCD部署官网：https://argo-cd.readthedocs.io/en/stable/getting_started/
      argocd login argocd.icloud2native.com
      ```
 
-     ![image-20230117172415961](images\image-20230117172415961.png)
+     ![image-20230117172415961](images/image-20230117172415961.png)
 
      修改密码(admin/adminadmin)
 
@@ -3304,15 +3304,15 @@ ArgoCD部署官网：https://argo-cd.readthedocs.io/en/stable/getting_started/
      argocd account update-password
      ```
 
-     ![image-20230117172649655](images\image-20230117172649655.png)
+     ![image-20230117172649655](images/image-20230117172649655.png)
 
-     ![image-20230117172744116](images\image-20230117172744116.png)
+     ![image-20230117172744116](images/image-20230117172744116.png)
 
 ## 3.3 Application管理
 
 先导入一个测试的repo在本地gitlab（gitlab.icloud2native.com），方便测试。
 
-![image-20230117174515442](images\image-20230117174515442.png)
+![image-20230117174515442](images/image-20230117174515442.png)
 
 ### 3.3.1 创建application
 
@@ -3326,7 +3326,7 @@ argocd app create guestbook --repo http://code.gitlab.svc.cluster.local/root/arg
 
 从argocd WEB UI上查看是否创建成功：
 
-![image-20230117204700142](images\image-20230117204700142.png)
+![image-20230117204700142](images/image-20230117204700142.png)
 
 命令行同样可以看到：
 
@@ -3338,15 +3338,15 @@ argocd app list
 
 ![](images/image-20230117205030445.png)
 
-![image-20230117205221820](images\image-20230117205221820.png)
+![image-20230117205221820](images/image-20230117205221820.png)
 
 点击创建
 
-![image-20230117205529104](images\image-20230117205529104.png)
+![image-20230117205529104](images/image-20230117205529104.png)
 
 因为我们同步策略为auto，所以当修改配置文件，理论上会自动同步部署新版本，将image版本改为0.8.1
 
-![ ](images\image-20230117220213287.png)
+![ ](images/image-20230117220213287.png)
 
 ### 3.3.2 自动同步策略
 
@@ -3358,7 +3358,7 @@ argocd app list
   - 对于GitRepo上的一次提交，自动同步仅会执行一次，除非同时启用Self Heal机制；
   - 启用了自动同步的application不支持rollbacck
 
-![image-20230118154825135](images\image-20230118154825135.png)
+![image-20230118154825135](images/image-20230118154825135.png)
 
 ### 3.3.3 同步选项
 
@@ -3547,7 +3547,7 @@ argocd app list
 
 - [ ] argocd web ui 添加
 
-  ![image-20230118165940179](images\image-20230118165940179.png)
+  ![image-20230118165940179](images/image-20230118165940179.png)
 
 ### 3.3.6 管理Cluster
 
@@ -3637,7 +3637,7 @@ argocd app list
   
   ```
 
-  ![image-20230119145852222](images\image-20230119145852222.png)
+  ![image-20230119145852222](images/image-20230119145852222.png)
 
 ### 3.4.2 Project配置
 
@@ -3651,7 +3651,7 @@ argocd app list
 
   - default project由ArgoCD自动部署，需要用户按需要修改，但不能被删除
 
-    ![image-20230119150523090](images\image-20230119150523090.png)
+    ![image-20230119150523090](images/image-20230119150523090.png)
 
 - [ ] Project CRD资源规范的spec字段，可以嵌套多个字段:
 
@@ -3727,7 +3727,7 @@ argocd app list
   - 目标cluster的模板化，从而能够在单个资源配置文件中适配部署到多个kubernetes集群
   - 源Git配置仓库模板化
 
-  ![image-20230119152847392](images\image-20230119152847392.png)
+  ![image-20230119152847392](images/image-20230119152847392.png)
 
 #### 3.4.3.2 ApplicationSet 控制器的工作模式
 
@@ -3735,7 +3735,7 @@ argocd app list
 - 生成或更新的Application资源则由Application控制器确保期望状态和实际状态的一致
 - 因此，ApplicationSet控制器仅负责确保ApplicationSet资源期望状态和实际状态的一致
 
-![image-20230119153357339](images\image-20230119153357339.png)
+![image-20230119153357339](images/image-20230119153357339.png)
 
 #### 3.4.3.3 ApplicationSet 资源配置
 
@@ -3757,7 +3757,7 @@ argocd app list
     1. Application资源模板，配置格式与Appliction规范相同，但他还有一些参数化的配置
     2. 通过将这些参数替换为generator生成的值，完成模板的实例化
 
-    ![image-20230119154250188](images\image-20230119154250188.png)
+    ![image-20230119154250188](images/image-20230119154250188.png)
 
 - [ ] ApplicationSet配置示例
 
@@ -3812,7 +3812,7 @@ argocd app list
   
   ```
 
-  ![image-20230119160502250](images\image-20230119160502250.png)
+  ![image-20230119160502250](images/image-20230119160502250.png)
 
 # 4 Argo Rollouts
 
@@ -3836,7 +3836,7 @@ argocd app list
 
 - [ ] Argo Rollout主要由Argo Rollout Controller、Rollout CRD、Replicaset、Ingress/Service、AnalysisTemplate//AnalysisRun、Metric providers和CLI/GUI等组件构成
 
-  ![image-20230120152501840](images\image-20230120152501840.png)
+  ![image-20230120152501840](images/image-20230120152501840.png)
 
 ### 4.1.2 Argo Rollouts 组件
 
@@ -3864,7 +3864,7 @@ argocd app list
   kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
   ```
 
-  ![image-20230120161947561](images\image-20230120161947561.png)
+  ![image-20230120161947561](images/image-20230120161947561.png)
 
 - [ ] 部署Dashboard
 
@@ -3872,7 +3872,7 @@ argocd app list
   kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/download/v1.4.0/dashboard-install.yaml
   ```
 
-  ![image-20230120162448673](images\image-20230120162448673.png)
+  ![image-20230120162448673](images/image-20230120162448673.png)
 
   将Argo Dashboard以Ingress gateway暴漏在集群外
 
@@ -3931,7 +3931,7 @@ argocd app list
 
   访问dashboard
 
-  ![image-20230120163248519](images\image-20230120163248519.png)
+  ![image-20230120163248519](images/image-20230120163248519.png)
 
 - [ ] **部署kubectl argo rollouts插件**
 
@@ -3951,7 +3951,7 @@ argocd app list
     kubectl argo rollouts version
     ```
 
-    ![image-20230120205324749](images\image-20230120205324749.png)
+    ![image-20230120205324749](images/image-20230120205324749.png)
 
 ### 4.1.4  Rollouts CRD 资源规范
 
@@ -4019,7 +4019,7 @@ argocd app list
   - startingStep
   - measurementRetention
 
-  ![image-20230202141911080](images\image-20230202141911080.png)
+  ![image-20230202141911080](images/image-20230202141911080.png)
 
 ### 4.2.3 配置Canary 策略（三）
 
@@ -4172,11 +4172,11 @@ kubectl apply -f 01-argo-rollouts-demo.yaml
  kubectl argo rollouts list rollouts
 ```
 
-![image-20230202170016265](images\image-20230202170016265.png)
+![image-20230202170016265](images/image-20230202170016265.png)
 
-![image-20230202170049343](images\image-20230202170049343.png)
+![image-20230202170049343](images/image-20230202170049343.png)
 
-![image-20230202170425851](images\image-20230202170425851.png)
+![image-20230202170425851](images/image-20230202170425851.png)
 
 ​     2、更新镜像版本，查看部署情况
 
@@ -4190,9 +4190,9 @@ kubectl apply -f 01-argo-rollouts-demo.yaml
 kubectl argo rollouts get rollout rollouts-spring-boot-helloworld -w
 ```
 
-![image-20230202170828827](images\image-20230202170828827.png)
+![image-20230202170828827](images/image-20230202170828827.png)
 
-![image-20230202170859644](images\image-20230202170859644.png)
+![image-20230202170859644](images/image-20230202170859644.png)
 
 4、由于更新的step中第一步暂停，需要手动去恢复
 
@@ -4202,9 +4202,9 @@ kubectl argo rollouts promote rollouts-spring-boot-helloworld
 
 执行后，后续的step继续进行
 
-![image-20230202171423358](images\image-20230202171423358.png)
+![image-20230202171423358](images/image-20230202171423358.png)
 
-![image-20230202171521239](images\image-20230202171521239.png)
+![image-20230202171521239](images/image-20230202171521239.png)
 
 ### 4.2.5 实战案例2：结合istio进行canary流量迁移
 
@@ -4352,7 +4352,7 @@ kubectl argo rollouts promote rollouts-spring-boot-helloworld
   
   查看结果：
   
-  ![image-20230203112239914](images\image-20230203112239914.png)
+  ![image-20230203112239914](images/image-20230203112239914.png)
   
 - [ ] 更新镜像，查看canary部署情况
 
@@ -4362,13 +4362,13 @@ kubectl argo rollouts promote rollouts-spring-boot-helloworld
 
 - [ ] 查看是否按照canary部署部署
 
-  ![image-20230203112858441](images\image-20230203112858441.png)
+  ![image-20230203112858441](images/image-20230203112858441.png)
 
-  ![image-20230203113025400](images\image-20230203113025400.png)
+  ![image-20230203113025400](images/image-20230203113025400.png)
 
 - [ ] 查看istio中canary和stable的weight是否按照rollouts的step的weight动态调整
 
-  ![image-20230203112813899](images\image-20230203112813899.png)
+  ![image-20230203112813899](images/image-20230203112813899.png)
 
 ### 4.2.6 实战案例3：结合prometheus指标进行analysis
 
@@ -4453,7 +4453,7 @@ cd /usr/local/istio
 kubectl apply -f samples/addons/
 ```
 
-![image-20230203150612172](images\image-20230203150612172.png)
+![image-20230203150612172](images/image-20230203150612172.png)
 
 3、将prometheus以istio ingressgateway暴露出来
 
@@ -4509,7 +4509,7 @@ spec:
 
 访问prometheus的dashboard：
 
-![image-20230203151300826](images\image-20230203151300826.png)
+![image-20230203151300826](images/image-20230203151300826.png)
 
 4、把prometheus作为analysis的provider，定义anslysisTemplate和Rollout资源对象
 
@@ -4670,9 +4670,9 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
 
 6、测试是否能按照预期，analysis失败，导致canary的pod rollback.
 
-![image-20230208165218273](images\image-20230208165218273.png)
+![image-20230208165218273](images/image-20230208165218273.png)
 
-![image-20230208165303382](images\image-20230208165303382.png)
+![image-20230208165303382](images/image-20230208165303382.png)
 
 7、将value值改为正确，在进行测试，发现成功。
 
@@ -4682,9 +4682,9 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
 
 查看canary是否更新成功：
 
-![image-20230208170034405](images\image-20230208170034405.png)
+![image-20230208170034405](images/image-20230208170034405.png)
 
-![image-20230208170103380](images\image-20230208170103380.png)
+![image-20230208170103380](images/image-20230208170103380.png)
 
 ## 4.3 Rollouts更新策略之blueGreen
 
@@ -4820,7 +4820,7 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
 
      apply 后:
 
-     ![image-20230210150129023](images\image-20230210150129023.png)
+     ![image-20230210150129023](images/image-20230210150129023.png)
 
   2.  更新镜像版本
 
@@ -4828,11 +4828,11 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
      kubectl argo rollouts set image rollout-helloworld-bluegreen spring-boot-helloworld=ikubernetes/spring-boot-helloworld:v0.8.0
      ```
 
-     ![image-20230210152217404](images\image-20230210152217404.png)
+     ![image-20230210152217404](images/image-20230210152217404.png)
 
      会生成2个版本的pod，但是由于没有手动promote，所以流量还是在老版本
 
-     ![image-20230210153251494](images\image-20230210153251494.png)
+     ![image-20230210153251494](images/image-20230210153251494.png)
 
   3. 手动将流量切到新版本上面
 
@@ -4842,9 +4842,9 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
 
   4. 查看流量是否切换
 
-     ![image-20230210153543292](images\image-20230210153543292.png)
+     ![image-20230210153543292](images/image-20230210153543292.png)
 
-     ![image-20230210153608735](images\image-20230210153608735.png)
+     ![image-20230210153608735](images/image-20230210153608735.png)
 
   5. 当发现新版本有问题，要回滚
 
@@ -4853,9 +4853,9 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
      kubectl argo rollouts promote rollout-helloworld-bluegreen
      ```
 
-     ![image-20230210153931782](images\image-20230210153931782.png)
+     ![image-20230210153931782](images/image-20230210153931782.png)
 
-     ![image-20230210153953307](images\image-20230210153953307.png)
+     ![image-20230210153953307](images/image-20230210153953307.png)
 
 ### 4.3.3 实战案例5：在blue-green部署上使用Analysis
 
@@ -4965,7 +4965,7 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
 
      apply 后
 
-     ![image-20230210155530523](images\image-20230210155530523.png)
+     ![image-20230210155530523](images/image-20230210155530523.png)
 
   2.  更新版本
 
@@ -4973,9 +4973,9 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
      kubectl argo rollouts set image rollout-helloworld-bluegreen-with-analysis spring-boot-helloworld=ikubernetes/spring-boot-helloworld:v0.8.1
      ```
 
-     ![image-20230210155919344](D:\云原生\tekton\images\image-20230210155919344.png)
+     ![image-20230210155919344](images/image-20230210155919344.png)
 
-     ![image-20230210155943005](images\image-20230210155943005.png)
+     ![image-20230210155943005](images/image-20230210155943005.png)
 
 ## 4.4 在ArgoCD中使用Argo Rollouts
 
@@ -4986,7 +4986,7 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
   - ArgoCD自动进行Sync
   - Argo Rollouts部署应用基于分析的渐进式交付
 
-  ![image-20230210161000259](images\image-20230210161000259.png)
+  ![image-20230210161000259](images/image-20230210161000259.png)
 
 ### 4.4.1 实战案例6：ArgoCD和Argo Rollouts自动化部署应用
 
@@ -5011,7 +5011,7 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
 
   1. 先部署一个gitlab，并且将https://gitee.com/mageedu/spring-boot-helloworld-deployment.git  导入gitlab中
   
-     ![image-20230210173045346](D:\云原生\tekton\images\image-20230210173045346.png)
+     ![image-20230210173045346](images/image-20230210173045346.png)
   
   2.  定义argocd的application资源
   
@@ -5058,17 +5058,17 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
   
      apply：
   
-     ![image-20230210173629628](images\image-20230210173629628.png)
+     ![image-20230210173629628](images/image-20230210173629628.png)
   
-     ![image-20230210173656672](D:\云原生\tekton\images\image-20230210173656672.png)
+     ![image-20230210173656672](images/image-20230210173656672.png)
   
   3.  gitlab上更新镜像版本，看argocd是否能同步以及rollout是否能按照canary运行
   
-     ![image-20230210174213903](images\image-20230210174213903.png)
+     ![image-20230210174213903](images/image-20230210174213903.png)
   
   4.  查看argocd 和argo rollout是否能部署
   
-  ![image-20230211110914089](images\image-20230211110914089.png)
+  ![image-20230211110914089](images/image-20230211110914089.png)
   
   ![image-20230211110955987](images/image-20230211110955987.png)
   
