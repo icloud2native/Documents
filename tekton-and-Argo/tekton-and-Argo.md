@@ -5070,5 +5070,5 @@ kubectl argo rollouts set image rollouts-helloworld-with-analysis  spring-boot-h
   
   ![image-20230211110914089](images\image-20230211110914089.png)
   
-  ![image-20230211110955987](images\image-20230211110955987.png)
+  ![image-20230211110955987](images/image-20230211110955987.png)
   
