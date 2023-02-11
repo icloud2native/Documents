@@ -22,7 +22,7 @@
   - Config Update(即Deployment Automator)将image的变更信息推送到配置仓库
   - 随后，使用分支和发布策略，完成应用部署
 
-<img src="images\image-20230106144212691.png" alt="image-20230106144212691" style="zoom:80%;" />
+<img src="images/image-20230106144212691.png" alt="image-20230106144212691" style="zoom:80%;" />
 
 ## 1.3 GitOps的实施要点
 
@@ -50,7 +50,7 @@
 
 - 从变更频率高或易于中断的应用程序开始
 
-<img src="images\image-20230106151409705.png" alt="image-20230106151409705" style="zoom:80%;" />
+<img src="images/image-20230106151409705.png" alt="image-20230106151409705" style="zoom:80%;" />
 
 ## 1.5 GitOps工具集
 
@@ -91,7 +91,7 @@
 
 Tekton Pipeline中的Pipeline模型中存在三个核心术语：Step，Task和Pipeline
 
-<img src="images\image-20230106171933668.png" alt="image-20230106171933668" style="zoom:80%;" />
+<img src="images/image-20230106171933668.png" alt="image-20230106171933668" style="zoom:80%;" />
 
 - [ ] **Step**
   - CI/CD工作流中的一个具体操作，例如Java程序的编译操作
@@ -163,7 +163,7 @@ Tekton Pipeline中的Pipeline模型中存在三个核心术语：Step，Task和P
     kubectl get pods -n tekton-pipelines
     ```
 
-    ![image-20230107131426888](images\image-20230107131426888.png)
+    ![image-20230107131426888](images/image-20230107131426888.png)
 
 - [ ] **部署Tekton dashboard**
 
@@ -175,7 +175,7 @@ Tekton Pipeline中的Pipeline模型中存在三个核心术语：Step，Task和P
 
   - 查看pod
 
-    <img src="images\image-20230106200153195.png" alt="image-20230106200153195" style="zoom:80%;" />
+    <img src="images/image-20230106200153195.png" alt="image-20230106200153195" style="zoom:80%;" />
 
   - 将dashboard暴露在集群外，采用的是istio方式
 
