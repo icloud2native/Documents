@@ -29,7 +29,7 @@
   - 基于sidercar模式同网格中每个服务实例一同部署
   - 拦截服务流量，强制执行控制平面中定义的策略，并收集遥测数据
 
-![image-20230314210909068](images\image-20230314210909068.png)
+![image-20230314210909068](images/image-20230314210909068.png)
 
 ### 1.1.2 Istio v1.0 Architecture
 
@@ -46,7 +46,7 @@
   - 帮助用户基于服务身份构建零信任的安全网络环境
   - 密钥管理
 
-  ![image-20230314211446697](images\image-20230314211446697.png)
+  ![image-20230314211446697](images/image-20230314211446697.png)
 
 ### 1.1.3 Istio v1.1 Architecture
 
@@ -58,7 +58,7 @@
   - 是ISTIO的配置验证，摄取，处理和分发组件
   - 负责将其余的istio组件从底层平台隔离，实现pilot与底层平台解耦
 
-![image-20230314212110161](images\image-20230314212110161.png)
+![image-20230314212110161](images/image-20230314212110161.png)
 
 ### 1.1.4 Istio v1.5 Architecture
 
@@ -72,7 +72,7 @@
   - Istiod充当控制平面，将配置分发到所有sidercar代理和网关
   - 能够实现智能化的复杂均衡机制，且相关流量绕过kube-proxy
 
-  ![image-20230314212557855](images\image-20230314212557855.png)
+  ![image-20230314212557855](images/image-20230314212557855.png)
 
 ## 1.2 Istio 组件简介
 
@@ -86,7 +86,7 @@
 
 - [ ] 程序文件istio-ingressgateway和istio-egressgateweay
 
-  ![image-20230314213101130](images\image-20230314213101130.png)
+  ![image-20230314213101130](images/image-20230314213101130.png)
 
 ### 1.2.2 Istio Sidecar Injector
 
@@ -100,7 +100,7 @@
 
 ​          ◆ 创建Pod时自动注入过程发生在Admission Controller的Mutation阶段，根据自动注入配置，kube-apiserver拦截到Pod创建请求时调用自动注入服务istio-sidecar-injector生成Sidecar容器的描述并将其插入到Pod的配置清单中.
 
-![image-20230314213353410](images\image-20230314213353410.png)
+![image-20230314213353410](images/image-20230314213353410.png)
 
 ### 1.2.3 Istio 可视化
 
@@ -121,7 +121,7 @@
   - Jaeger：查询和展示追踪数据，前提是istio需要开启追踪功能
   - Granafa: 可视化展示数据
 
-![image-20230314214530716](images\image-20230314214530716.png)
+![image-20230314214530716](images/image-20230314214530716.png)
 
 ### 1.2.4 Istio CRD描述
 
@@ -149,7 +149,7 @@
 - [ ] 数据平面：默认部署为某名称空间下的各Pod的Sidercar Container
   - istio-proxy
 
-![image-20230316142310233](images\image-20230316142310233.png)
+![image-20230316142310233](images/image-20230316142310233.png)
 
 ## 2.2 部署Istio
 
@@ -205,7 +205,7 @@
 
 - [ ] 内置的各profile默认启用的组件会有所不同
 
-  ![image-20230316144803132](images\image-20230316144803132.png)
+  ![image-20230316144803132](images/image-20230316144803132.png)
 
 ### 2.2.3 Istio Operator配置说明
 
@@ -326,7 +326,7 @@
   - IstioOperator API支持以一致性的方式定义每一个组件kubernetes设置，每个组件都有一个kubernetesResourceSpec
   - 它支持修改许多配置参数：包括Resources、Readiness probes、Replica count、HPA、PDB、Pod annotations、Service annotations、ImagePullPolicy、Node selector、Service、Toleration、Strategy、Env及Pod security context等.
 
-​        ![image-20230316171958825](images\image-20230316171958825.png)
+​        ![image-20230316171958825](images/image-20230316171958825.png)
 
 ### 2.2.6 卸载Istio
 
@@ -388,7 +388,7 @@
   - 对于外部服务，网格内的sidercar方式运行的Envoy即能执行治理；
   - 若需要将外出流量收束与特定的几个节点需要使用专用的Egress Gateway完成；
 
-  ![image-20230316182217247](images\image-20230316182217247.png)
+  ![image-20230316182217247](images/image-20230316182217247.png)
 
 - [ ] VirtualService和D二十题nationRules是Istio流量功能的核心组件
 
@@ -407,9 +407,9 @@
 
 - [ ] DestinRules定义集群或子集内部的流量分发机制
 
-  ![image-20230317155459557](images\image-20230317155459557.png)       
+  ![image-20230317155459557](images/image-20230317155459557.png)       
 
-![image-20230317155621905](images\image-20230317155621905.png)
+![image-20230317155621905](images/image-20230317155621905.png)
 
 ### 2.3.2 配置Istio流量治理
 
@@ -433,7 +433,7 @@
   kubectl edit svc istio-ingressgateway -n istio-system
   ```
 
-  ![image-20230322154916857](images\image-20230322154916857.png)
+  ![image-20230322154916857](images/image-20230322154916857.png)
 
 - [ ] 定义kiali的ingress gateway的资源配置清单
 
@@ -497,7 +497,7 @@
 
 - [ ] 本地解析，后访问kiali
 
-  ![image-20230322170224512](images\image-20230322170224512.png)
+  ![image-20230322170224512](images/image-20230322170224512.png)
 
 #### 2.3.3.2 开放grafana至集群外
 
@@ -564,7 +564,7 @@
 
 - [ ] 访问grafana
 
-  ![image-20230322175016363](images\image-20230322175016363.png)
+  ![image-20230322175016363](images/image-20230322175016363.png)
 
 #### 2.3.3.3 开放prometheus至集群外
 
@@ -622,7 +622,7 @@
 
 - [ ] 访问prometheus
 
-  ![image-20230322181112440](images\image-20230322181112440.png)
+  ![image-20230322181112440](images/image-20230322181112440.png)
 
 #### 2.3.3.4 开放trace至集群外
 
@@ -680,7 +680,7 @@
 
 - [ ] 访问Jaeger
 
-  ![image-20230322181428918]( images\image-20230322181428918.png)
+  ![image-20230322181428918]( images/image-20230322181428918.png)
 
 ### 2.3.4 网格流量治理和服务发现
 
@@ -725,7 +725,7 @@
   - frontend(pproxy)：前端应用，会请求后端的demoapp
   - demoapp：后端应用，同时部署2个版本。
 
-  ![image-20230328211532124](images\image-20230328211532124.png)
+  ![image-20230328211532124](images/image-20230328211532124.png)
 
 - [ ] 部署demoapp和frontend
 
@@ -916,7 +916,7 @@
   while true;do curl proxy;sleep 0.$RANDOM;curl proxy/canary;sleep 0.$RANDOM;done
   ```
 
-  ![image-20230328214619974](images\image-20230328214619974.png)
+  ![image-20230328214619974](images/image-20230328214619974.png)
 
 #### 2.3.4.3 案例二：使用Gateway暴露proxy服务
 
@@ -924,7 +924,7 @@
 
   - proxy-gateway--> vs/proxy-->dr/proxy-->MESH
 
-    ![image-20230329145258216](images\image-20230329145258216.png)
+    ![image-20230329145258216](images/image-20230329145258216.png)
 
 - [ ] 创建Gateway资源，通过网格，为frontend引入集群外部的流量
 
@@ -964,7 +964,7 @@
 
 - [ ] 在集群外部，发起请求，可以看到service graph
 
-  ![image-20230329152515061](images\image-20230329152515061.png)
+  ![image-20230329152515061](images/image-20230329152515061.png)
 
 ## 2.4 Istio流量治理进阶
 
@@ -979,7 +979,7 @@
 
 - [ ] Pilot负责网格数据平面相关配置信息的获取，生成，和分发，它通过Service Registry获取网格配置信息并将其转换为XDS接口的标准数据格式，而后经gRPC分发至相关的Envoy;
 
-  ![image-20230822102127039](D:\云原生\istio\images\image-20230822102127039.png)
+  ![image-20230822102127039](images/image-20230822102127039.png)
 
   - Service Registry：服务注册表中存储有相关平台上注册的各Service的相关信息，例如kubernetes services等；
   - Config Storage: 配置存储，例如Kub   ernetes的API Server，配置信息通常由用户提供，对于kubernetes来说，他们以CRD格式提供并存储于API Server中；
@@ -994,7 +994,7 @@
 
 - [ ] 事实上,pilot项目自身的组件也是由工作于控制平面的pilot-discovery和工作于数据平面的pilot-agent共同组成;
 
-  ![image-20230822120051292](D:\云原生\istio\images\image-20230822120051292.png)
+  ![image-20230822120051292](images/image-20230822120051292.png)
 
 - [ ] 控制平面相关组件
 
@@ -1187,7 +1187,7 @@
 
   4. 请求`http://proxy/backend`看是否重定向
 
-     ![image-20230822161304573](D:\云原生\istio\images\image-20230822161304573.png)
+     ![image-20230822161304573](images/image-20230822161304573.png)
 
 
 #### 2.4.3.3 weight
@@ -1329,11 +1329,11 @@
 
    访问`http://demoapp:8080`
 
-   ![image-20230822163144643](D:\云原生\istio\images\image-20230822163144643.png)
+   ![image-20230822163144643](images/image-20230822163144643.png)
 
    kiali查看拓扑
 
-   ![image-20230822163300361](D:\云原生\istio\images\image-20230822163300361.png)
+   ![image-20230822163300361](images/image-20230822163300361.png)
 
 #### 2.4.3.4 rewrite
 
@@ -1372,11 +1372,11 @@
 
    访问：`http://demoapp:8080/canary`
 
-   ![image-20230822164922724](D:\云原生\istio\images\image-20230822164922724.png)
+   ![image-20230822164922724](images/image-20230822164922724.png)
 
    访问：`http://demoapp:8080`
 
-   ![image-20230822164951118](D:\云原生\istio\images\image-20230822164951118.png)
+   ![image-20230822164951118](images/image-20230822164951118.png)
 
 #### 2.4.3.5 header
 
@@ -1715,13 +1715,13 @@
 
    我们在客户端请求`curl demoapp:8080`,虽然请求到了v10	版本，但是我们在v11版本的pod里面看到了有流量进入。
 
-   ![image-20230823114809189](D:\云原生\istio\images\image-20230823114809189.png)
+   ![image-20230823114809189](images/image-20230823114809189.png)
 
    
 
-   ![image-20230823114844538](D:\云原生\istio\images\image-20230823114844538.png)
+   ![image-20230823114844538](images/image-20230823114844538.png)
 
-![image-20230823115241433](D:\云原生\istio\images\image-20230823115241433.png)
+![image-20230823115241433](images/image-20230823115241433.png)
 
 ### 2.4.4 DestinationRule配置要点
 
@@ -1795,11 +1795,11 @@
 
    - `curl demoapp:8080`  到达v10版本，负载均衡策略为`LEAST_CONN`
 
-     ![image-20230823175438408](D:\云原生\istio\images\image-20230823175438408.png)
+     ![image-20230823175438408](images/image-20230823175438408.png)
 
    - `curl -H "X-Use: wanglei" demoapp:8080`到达v11版本的负载均衡策略是一致性哈希
 
-     ![image-20230823175605282](D:\云原生\istio\images\image-20230823175605282.png)
+     ![image-20230823175605282](images/image-20230823175605282.png)
 
 #### 2.4.4.2 connectionPool
 
