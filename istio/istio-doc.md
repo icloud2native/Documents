@@ -13,7 +13,7 @@
   - 2019年3月，Istio v1.1：完全分布式
   - 2020年3月Istio v1.5：；回归单体
 
-  ![image-20230314184518865](images\image-20230314184518865.png)
+  ![image-20230314184518865](images/image-20230314184518865.png)
 
 ### 1.1.1 Istio v1.0 Architecture
 
