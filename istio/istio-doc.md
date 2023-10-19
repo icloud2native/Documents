@@ -1921,11 +1921,11 @@
 
    - 访问demoapp，流量到达v10版本，`curl demoapp:8080/livez`,
 
-     ![image-20230824155903524](D:\云原生\istio\images\image-20230824155903524.png)
+     ![image-20230824155903524](images/image-20230824155903524.png)
 
    - 查看demoapp的pod
 
-     ![image-20230824155954123](D:\云原生\istio\images\image-20230824155954123.png)
+     ![image-20230824155954123](images/image-20230824155954123.png)
 
    - 给其中一个pod注入故障，使的请求这个pod的时候，返回5**错误
 
@@ -1957,11 +1957,11 @@
 
    - 此时在访问demoapp服务，会出现访问出错5次`FAIL`，就会把这个pod驱逐出去，然后驱逐10秒后，重新对该pod检测，如果还是连续5次error，再驱逐，这次驱逐时长就会很长。和我们定义的异常点检测相吻合。
 
-     ![image-20230824161039441](D:\云原生\istio\images\image-20230824161039441.png)
+     ![image-20230824161039441](images/image-20230824161039441.png)
 
      而且在sidercar上查看该endpoint已经是`unhealth`状态。
 
-     ![image-20230824161144082](D:\云原生\istio\images\image-20230824161144082.png)
+     ![image-20230824161144082](images/image-20230824161144082.png)
 
 ### 2.4.5 Gateway的配置要点
 
@@ -2066,7 +2066,7 @@
 
     1. 目标端口为tcp协议的15018、15090、15021、15020，直接RETURN,不拦截；
 
-       ![image-20230824182852519](D:\云原生\istio\images\image-20230824182852519.png)
+       ![image-20230824182852519](images/image-20230824182852519.png)
 
   - ISTIO_IN_REDIRECT: 其他目标端口的请求报文由自定义的规则（`-A ISTIO_IN_REDIRECT -p tcp -j REDIRECT --to-ports 15006`）将请求重定向到15006端口；
 
@@ -2074,7 +2074,7 @@
 
     2. Envoy根据报文目标地址匹配入向的filter，若存在，则根据匹配的filter将请求代理到Envoy后端的应用程序；
 
-       ![image-20230824183407125](D:\云原生\istio\images\image-20230824183407125.png)
+       ![image-20230824183407125](images/image-20230824183407125.png)
 
 - [ ] 出向流量拦截：OUTPUT --> ISTIO_OUTPUT
 
@@ -2086,21 +2086,21 @@
     4. 从lo接口流出，且UID 或GID owner非为1337的出口流量
     5. 目标地址为127.0.0.1/32的出向流量
 
-    ![image-20230824184346071](D:\云原生\istio\images\image-20230824184346071.png)
+    ![image-20230824184346071](images/image-20230824184346071.png)
 
   - ISTIO_REDIRECT：其他报文则由该自定义链的规则(-A ISTIO_REDIRECT -p tcp -j REDIRECT --to-ports 15001)重定向到15001端口
 
-    ![image-20230824184716880](D:\云原生\istio\images\image-20230824184716880.png)
+    ![image-20230824184716880](images/image-20230824184716880.png)
 
 #### 2.5.4.3 istio控制面和istio数据面使用的port
 
 - [ ] 数据层面sidercar使用的端口
 
-  ![image-20230824185000441](D:\云原生\istio\images\image-20230824185000441.png)
+  ![image-20230824185000441](images/image-20230824185000441.png)
 
 - [ ] 控制平面(istiod)使用的端口
 
-  ![image-20230824185136484](D:\云原生\istio\images\image-20230824185136484.png)
+  ![image-20230824185136484](images/image-20230824185136484.png)
 
 #### 2.5.4.4 istio-proxy容器
 
@@ -2158,7 +2158,7 @@
 
   - 对于进入到侦听器`0.0.0.0:15006`的流量，virtualInboundListerner会在filterChains中，通过一系列的`filter_chain_match`对流量进行匹配检测，以确定应该由哪个或哪些过滤器进行流量处理；
 
-    ![image-20230825113623114](D:\云原生\istio\images\image-20230825113623114.png)
+    ![image-20230825113623114](images/image-20230825113623114.png)
 
 - [ ] 事实上，入向流量的相关过滤器匹配条件及流量处理机制，也可以通过简单的`istioctl pc`来获取
 
@@ -2168,7 +2168,7 @@
     istioctl pc listeners  demoappv10-b5d9576cc-4tfkx --port 15006
     ```
 
-    ![image-20230825114807581](D:\云原生\istio\images\image-20230825114807581.png)
+    ![image-20230825114807581](images/image-20230825114807581.png)
 
     - MATCH字段即为filterChains中，由filterChainMatch定义的各种过滤规则；
     - Destination字段描述了相应的流量路由目标；
@@ -2400,7 +2400,7 @@
    docker-compose up
    ```
 
-   ![image-20230925190016110](images\image-20230925190016110.png)
+   ![image-20230925190016110](images/image-20230925190016110.png)
 
 2. 创建VirtualService和DestinationRule，为ServiceEntry的流量配置高级路由规则
 
@@ -2473,7 +2473,7 @@
 while true; do curl -H 'host: nginx.icloud2native.com' 192.168.170.100:8091;sleep 0.$RANDOM; done
 ```
 
-![image-20230925190547788](images\image-20230925190547788.png)
+![image-20230925190547788](images/image-20230925190547788.png)
 
 ```sh
  while true; do curl -H 'host: nginx.icloud2native.com' -H "X-Testing: true" 192.168.170.100:8091;sleep 0.$RANDOM; done
@@ -2481,7 +2481,7 @@ while true; do curl -H 'host: nginx.icloud2native.com' 192.168.170.100:8091;slee
 
 会发现定义的vs规则生效，有一部分已经注入故障，在kiali上查看：
 
-![image-20230925190724905](images\image-20230925190724905.png)
+![image-20230925190724905](images/image-20230925190724905.png)
 
 ### 2.6.5 WorkloadEntry和WorkloadGroup
 
@@ -2632,7 +2632,7 @@ while true; do curl -H 'host: nginx.icloud2native.com' 192.168.170.100:8091;slee
 while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.$RANDOM; done
 ```
 
-![image-20230926100830381](images\image-20230926100830381.png)
+![image-20230926100830381](images/image-20230926100830381.png)
 
 #### 2.6.5.2 WorkloadEntry使用案例二
 
@@ -2785,7 +2785,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.$RANDOM; done
   ```
 
-  ![image-20230926103721956](images\image-20230926103721956.png)
+  ![image-20230926103721956](images/image-20230926103721956.png)
 
 ## 2.7 Egress Gateway
 
@@ -2975,7 +2975,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.$RANDOM; done
   ```
 
-  ![image-20230926154621869](images\image-20230926154621869.png)
+  ![image-20230926154621869](images/image-20230926154621869.png)
 
 # 3. Istio Telemetry 能力
 
@@ -3185,7 +3185,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 - Envoy Sidecar 在每个报告中将源和目标工作负载的ID信息发送给Mixer，并由Mixer从k8s上获取其他必要的元数据；
 - 每个Envoy Sidercar和Mixer之间都需要维护一个活动连接，因此会导致Envoy上CPU和内存资源的消耗，以及更大的延迟；
 
-![image-20231010195934183](D:\云原生\istio\images\image-20231010195934183.png)
+![image-20231010195934183](images/image-20231010195934183.png)
 
 #### 3.2.3.2 服务级指标的新实现（Telemetry V2）
 
@@ -3210,7 +3210,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
 - [ ] Telemetry V2架构中的Metadata Exchange和Stats插件
 
-  ![image-20231010202151140](D:\云原生\istio\images\image-20231010202151140.png)
+  ![image-20231010202151140](images/image-20231010202151140.png)
 
 #### 3.2.3.3 在Istio网格中启动stats扩展中定义的指标
 
@@ -3383,7 +3383,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   - Destination Cluster：目标workload所在的集群；
   -  Source Cluster：源workload所在的集群；
 
-  ![image-20231011114710530](D:\云原生\istio\images\image-20231011114710530.png)
+  ![image-20231011114710530](images/image-20231011114710530.png)
 
 #### 3.2.3.8 配置服务指标
 
@@ -3933,7 +3933,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
     - Ingress TLS passthrough + JWT Validation at Sidecars
     - **mTLS** + JWT Validation
 
-    ![image-20231017114257218](D:\云原生\istio\images\image-20231017114257218.png)
+    ![image-20231017114257218](images/image-20231017114257218.png)
 
 ### 4.1.4 Envoy的身份认证机制
 
@@ -3943,7 +3943,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
     道安全和证书自动管理；每个服务都需要有其用于服务间双向认证的标识，以实现此种认证机制；
 
-    ![image-20231017114540290](D:\云原生\istio\images\image-20231017114540290.png)
+    ![image-20231017114540290](images/image-20231017114540290.png)
 
   - Request authentication：也称为终端用户认证，用于认证请求的最终用户或者设备；Envoy通过JWT完成这个功能，支持相关实现包括Keycloak、Auth0、Firebase Auth和Google Auth等；
 
@@ -3992,7 +3992,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   - 各Sidecar Envoy和边缘代理（Ingress Gateway和Egress Gateway）作为PEP（Policy Enforcement Points）负责保护客户端和服务之间的通信安全
   - Envoy程序上用于遥测和审计的扩展
 
-  ![image-20231017143355163](D:\云原生\istio\images\image-20231017143355163.png)
+  ![image-20231017143355163](images/image-20231017143355163.png)
 
 ### 4.2.1 Istio Identity
 
@@ -4067,7 +4067,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   5. pilot-agent将证书以及私钥发送给本地的envoy；
   6. pilot-agent周期性的监视工作负载证书的有效期限，以处理证书和密钥的轮换
 
-![image-20231017172446145](D:\云原生\istio\images\image-20231017172446145.png)
+![image-20231017172446145](images/image-20231017172446145.png)
 
 ## 4.3 Istio认证
 
@@ -4106,11 +4106,11 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
 - [ ] Istio认证架构示意图
 
-  ![image-20231017175111210](D:\云原生\istio\images\image-20231017175111210.png)
+  ![image-20231017175111210](images/image-20231017175111210.png)
 
 ### 4.3.3 PeerAuthentication CRD 和 RequestAuthentication CRD
 
-![image-20231017175311058](D:\云原生\istio\images\image-20231017175311058.png)
+![image-20231017175311058](images/image-20231017175311058.png)
 
 ### 4.3.4 认证策略的生效范围
 
@@ -4361,7 +4361,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
       tcpdump -i eth0 -nn -X tcp port 8080
       ```
 
-      ![](D:\云原生\istio\images\image-20231018103121532.png)
+      ![](images/image-20231018103121532.png)
 
   - 测试2：网格外client客户端访问demoapp，抓包查看是否明文
 
@@ -4380,7 +4380,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
       tcpdump -i eth0 -nn -X tcp port 8080
       ```
 
-      ![](D:\云原生\istio\images\image-20231018104928937.png)
+      ![](images/image-20231018104928937.png)
 
 - [ ] NS TLS mode：STRICT
 
@@ -4410,11 +4410,11 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
       iKubernetes demoapp v1.0 !! ClientIP: 127.0.0.6, ServerName: demoappv10-b5d9576cc-g2qpr, ServerIP: 172.16.196.189!
       ```
 
-      ![](D:\云原生\istio\images\image-20231018112508509.png)
+      ![](images/image-20231018112508509.png)
 
     - client容器访问被拒绝，原因是因为服务端必须要求建立TLS通信，而客户端不支持，所以会被拒绝掉
 
-      ![](D:\云原生\istio\images\image-20231018112635548.png)  
+      ![](images/image-20231018112635548.png)  
 
 - [ ] NS TLS mode：DISABLE
 
@@ -4439,7 +4439,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
     - sleep容器正常访问，由于服务端DISABLE掉了mTLS，所以访问是明文的
 
-      ![image-20231018114519626](D:\云原生\istio\images\image-20231018114519626.png)
+      ![image-20231018114519626](images/image-20231018114519626.png)
 
     - 客户端定义`ISTIO_MUTUAL`,，由于服务端是DISABLE，所以sleep容器访问被拒绝
 
@@ -4468,7 +4468,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
       sleep 容器访问demoapp，发现请求被拒绝：
 
-      ![image-20231018114842268](D:\云原生\istio\images\image-20231018114842268.png)
+      ![image-20231018114842268](images/image-20231018114842268.png)
 
       将PA模式改成`PERMISSIVE`或者将客户端TLS模式去掉，发现又可以正常访问了。
 
@@ -4515,13 +4515,13 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
     - 网格外client访问demoapp，请求被拒绝，符合预期
 
-      ![image-20231018120516172](D:\云原生\istio\images\image-20231018120516172.png)
+      ![image-20231018120516172](images/image-20231018120516172.png)
 
     - 将workload的pa改成`UNSET`，会继承ns下的`PEERMISSIVE`，能正常访问，且是明文，符合预期
 
-      ![image-20231018120718739](D:\云原生\istio\images\image-20231018120718739.png)
+      ![image-20231018120718739](images/image-20231018120718739.png)
 
-      ![image-20231018120817394](D:\云原生\istio\images\image-20231018120817394.png)
+      ![image-20231018120817394](images/image-20231018120817394.png)
 
 #### 4.4.1.4 Security Gateway
 
@@ -4533,7 +4533,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 公开的端口支持按需配置为TLS,相关的证书加载自kubernetes上专用的secret资源对象；
 
-    ![image-20231018133500601](D:\云原生\istio\images\image-20231018133500601.png)
+    ![image-20231018133500601](images/image-20231018133500601.png)
 
 ##### 4.4.1.4.1 示例一：为kiali开启TLS
 
@@ -4614,7 +4614,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
 - [ ] 访问：
 
-  ![image-20231018141437055](D:\云原生\istio\images\image-20231018141437055.png)
+  ![image-20231018141437055](images/image-20231018141437055.png)
 
 ##### 4.4.1.4.2 示例二：为bookinfo开启TLS
 
@@ -4701,7 +4701,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
 - [ ] 访问
 
-  ![image-20231018153214898](D:\云原生\istio\images\image-20231018153214898.png)
+  ![image-20231018153214898](images/image-20231018153214898.png)
 
 ### 4.4.2 Request Authentication 配置
 
@@ -4724,7 +4724,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
 - [ ] RequestAuthentication CR 配置示例
 
-  ![image-20231018155832628](D:\云原生\istio\images\image-20231018155832628.png)
+  ![image-20231018155832628](images/image-20231018155832628.png)
 
 #### 4.4.2.1 RequestAuthentication实战
 
@@ -4818,21 +4818,21 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 参考ingressgateway暴露方法，找一个ip地址绑定在node的ent0网卡上面
 
-    ![image-20231018180050216](D:\云原生\istio\images\image-20231018180050216.png)
+    ![image-20231018180050216](images/image-20231018180050216.png)
 
   - 将该ip加到loadbalance的service上面
 
-    ![image-20231018180344997](D:\云原生\istio\images\image-20231018180344997.png)
+    ![image-20231018180344997](images/image-20231018180344997.png)
 
   - 本地解析
 
-    ![image-20231018180723854](D:\云原生\istio\images\image-20231018180723854.png)
+    ![image-20231018180723854](images/image-20231018180723854.png)
 
 - [ ] 访问Keyclock UI
 
   - http://keyclock.icloud2native.com:8080
 
-    ![image-20231018181109158](D:\云原生\istio\images\image-20231018181109158.png)
+    ![image-20231018181109158](images/image-20231018181109158.png)
 
     初始管理员用户密码：admin/admin
 
@@ -4842,7 +4842,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 以admin用户登录后，在默认的“Realm Setting”的“Themes”标签页即可完成设定
 
-  ![image-20231018190729931](D:\云原生\istio\images\image-20231018190729931.png)
+  ![image-20231018190729931](images/image-20231018190729931.png)
 
 - [ ] 添加用于JWT认证的用户
 
@@ -4850,21 +4850,21 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 添加新的Realm，用于将istio的认证环境同其他隔离，这里Realm的名称使用istio
 
-    ![image-20231018191150086](D:\云原生\istio\images\image-20231018191150086.png)
+    ![image-20231018191150086](images/image-20231018191150086.png)
 
   - 在 Keycloak 中，Client表示允许向Keycloak发起身份验证的实体，一般是指那些希望使用Keycloak来为其提供SSO的应用程序或服务；例如，网格内的认证，发起认证请求的客户端就是Sidecar Envoy；
 
   - 在Istio Realm中，创建新的客户端，这里任然使用istio进行标识，同时客户端协议选择使用openid-connect;
 
-    ![image-20231018191602993](D:\云原生\istio\images\image-20231018191602993.png)
+    ![image-20231018191602993](images/image-20231018191602993.png)
 
   - 在“用户”上点击“添加用户”，输入必要信息后，“保存”即可
 
-    ![image-20231018191850545](D:\云原生\istio\images\image-20231018191850545.png)
+    ![image-20231018191850545](images/image-20231018191850545.png)
 
   - 为用户添加认证“凭据”
 
-    ![image-20231018192043169](D:\云原生\istio\images\image-20231018192043169.png)
+    ![image-20231018192043169](images/image-20231018192043169.png)
 
 ##### 4.4.2.1.3 测试获取用户token
 
@@ -4872,9 +4872,9 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   -  http://<Keycloak_Host>:<Port>/auth/realms/<REALM>/protocol/openid-connect/token
 
-    ![image-20231018192450477](D:\云原生\istio\images\image-20231018192450477.png)
+    ![image-20231018192450477](images/image-20231018192450477.png)
 
-    ![image-20231018192528152](D:\云原生\istio\images\image-20231018192528152.png)
+    ![image-20231018192528152](images/image-20231018192528152.png)
 
   - 本示例中，可在k8s集群某个客户端进行测试，以确保对应的主机为集群的路径
 
@@ -4912,7 +4912,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 将命令结果中access_token段的信息复制到Encoded中，即可于Decoded得到解析结果
 
-    ![image-20231018193703693](D:\云原生\istio\images\image-20231018193703693.png)
+    ![image-20231018193703693](images/image-20231018193703693.png)
 
 ##### 4.4.2.1.4 基于Keycloak JWT的认证策略
 
@@ -4961,7 +4961,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   root@sleep-77b596cbf6-ljt92 /# curl -vv demoapp:8080
   ```
 
-  ![image-20231018195639850](D:\云原生\istio\images\image-20231018195639850.png)
+  ![image-20231018195639850](images/image-20231018195639850.png)
 
 - [ ] 将签发的token携带到请求的header后，发现能访问通
 
@@ -4979,7 +4979,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   
   - 携带token的请求可以正常访问
   
-    ![image-20231018203744519](D:\云原生\istio\images\image-20231018203744519.png)
+    ![image-20231018203744519](images/image-20231018203744519.png)
 
 ## 4.5 Istio 授权策略
 
@@ -5000,7 +5000,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   - 访问Service B请求必须附带合规的JWT
   - ....
 
-  ![image-20231019093122992](D:\云原生\istio\images\image-20231019093122992.png)
+  ![image-20231019093122992](images/image-20231019093122992.png)
 
 - [ ] 授权策略强制生效于服务端的Envoy代理处理的入向流量之上
 
@@ -5010,7 +5010,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
     ALLOW或者DENY；
 
-    ![image-20231019093630262](D:\云原生\istio\images\image-20231019093630262.png)
+    ![image-20231019093630262](images/image-20231019093630262.png)
 
 - [ ] AuthorizationPolicy CR 资源规范
 
@@ -5027,7 +5027,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
       - DENY策略优先于ALLOW策略：Istio会优先评估DENY策略，以确保ALLOW策略无法绕过DENY策略；
       - **空值的rules字段（即未定义任何有效的列表项），表示允许对目标workload的所有访问请求**
 
-  ![image-20231019093842965](D:\云原生\istio\images\image-20231019093842965.png)
+  ![image-20231019093842965](images/image-20231019093842965.png)
 
 ### 4.5.2 启用授权
 
@@ -5095,7 +5095,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
 - [ ] 下面两个示例中，前一个表示允许对default名称空间下所有的workload访问，而后一个表示拒绝对default名称空间下所有的workload访问
 
-  ![image-20231019104603685](D:\云原生\istio\images\image-20231019104603685.png)
+  ![image-20231019104603685](images/image-20231019104603685.png)
 
   - 注意事项
     - 拒绝所有时，任何ALLOW策略都将无效
@@ -5146,7 +5146,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
 - [ ] allow-nothing
 
-  ![image-20231019110220850](D:\云原生\istio\images\image-20231019110220850.png)
+  ![image-20231019110220850](images/image-20231019110220850.png)
 
 #### 4.5.3.1 TCP协议授权策略及示例
 
@@ -5234,15 +5234,15 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - default名称空间下以非default sa运行的Pod直接进行GET请求，请求失败
 
-    ![image-20231019112609730](D:\云原生\istio\images\image-20231019112609730.png)
+    ![image-20231019112609730](images/image-20231019112609730.png)
 
   - default名称空间下以default sa运行的Pod直接进行GET请求，请求成功
 
-    ![image-20231019112845279](D:\云原生\istio\images\image-20231019112845279.png)
+    ![image-20231019112845279](images/image-20231019112845279.png)
 
   - default名称空间下以default sa运行的Pod直接进行GET请求，请求失败
 
-    ![image-20231019112936263](D:\云原生\istio\images\image-20231019112936263.png)
+    ![image-20231019112936263](images/image-20231019112936263.png)
 
   - default名称空间下以default sa运行的Pod附带JWT进行POST请求， 请求成功
 
@@ -5255,7 +5255,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
     demoapp:8080/livez
     ```
 
-    ![image-20231019113430004](D:\云原生\istio\images\image-20231019113430004.png)
+    ![image-20231019113430004](images/image-20231019113430004.png)
 
 ### 4.5.4 外部鉴权服务
 
