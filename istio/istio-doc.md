@@ -5284,7 +5284,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
     - 无OIDC工作流：用户必须要自己获取JWT，并自行附加于HTTP请求之上；
     - 需要为每个应用各自定义RequestAuthentication和AuthorizationPolicy CR资源；
 
-  ![image-20231019145931973](D:\云原生\istio\images\image-20231019145931973.png)
+  ![image-20231019145931973](images/image-20231019145931973.png)
 
 - [ ] 方法二：由Ingress Gateway完成OIDC工作流
 
@@ -5303,7 +5303,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   - 缺点：
     - 粗粒度授权（已认证==已授权），且配置较复杂；
 
-  ![image-20231019150004703](D:\云原生\istio\images\image-20231019150004703.png)
+  ![image-20231019150004703](images/image-20231019150004703.png)
 
 - [ ] 方法三：组合JWT和oauth2-proxy自动化OIDC
 
@@ -5319,13 +5319,13 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
     - 目标工作负载上的istio-proxy根据RequestAuthentication和AuthorizationPolicy确认JWT的有效性
     - 若JWT有效，则开放目标服务给用户，否则，将返回错误消息（RBAC denied）
 
-  ![image-20231019150038693](D:\云原生\istio\images\image-20231019150038693.png)
+  ![image-20231019150038693](images/image-20231019150038693.png)
 
 ### 4.6.2 实战案例
 
 - [ ] 基于oauth2-proxy和Keycloak为Ingress Gateway实现SSO
 
-  ![image-20231019150523578](D:\云原生\istio\images\image-20231019150523578.png)
+  ![image-20231019150523578](images/image-20231019150523578.png)
 
 - [ ] 实现步骤
 
@@ -5344,7 +5344,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 仍以前面创建的istio Realm为例，但添加一个新的专用client
 
-    ![image-20231019151254164](D:\云原生\istio\images\image-20231019151254164.png)
+    ![image-20231019151254164](images/image-20231019151254164.png)
 
 - [ ] 第二步：配置Client, Keycloak上的Access Type共有三类：
 
@@ -5354,7 +5354,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - bearer-only：适用于不需要执行浏览器登录的应用，只允许携带bearer token访问，多运用于RESTful API的使用场景；
 
-    ![image-20231019153421339](D:\云原生\istio\images\image-20231019153421339.png)
+    ![image-20231019153421339](images/image-20231019153421339.png)
 
 - [ ] 第三步：获取Client的凭据
 
@@ -5362,13 +5362,13 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 默认的客户端认证器类型为“Client Id and Secret”，这意味着通过该Client访问Keycloak的各客户端程序需要事先提供Client ID和Secret以认证到Keycloak之上
 
-    ![image-20231019153525379](D:\云原生\istio\images\image-20231019153525379.png)
+    ![image-20231019153525379](images/image-20231019153525379.png)
 
 - [ ] 第四步：创建Mappers
 
   - 添加Mappers，为Client指定其audience
 
-    ![image-20231019153846054](D:\云原生\istio\images\image-20231019153846054.png)
+    ![image-20231019153846054](images/image-20231019153846054.png)
 
 - [ ] 第五步：部署OAuth2-Proxy
 
@@ -5638,17 +5638,17 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 配置完成后，首次访问kiali.icloud2native.com，将会跳转至Keycloak的认证界面
 
-    ![image-20231019163354307](D:\云原生\istio\images\image-20231019163354307.png)
+    ![image-20231019163354307](images/image-20231019163354307.png)
 
 - [ ] 第九步：添加用户
 
   - 根据oauth2-proxy的配置，要设置开启电子邮件认证，否则可鞥导致认证失败
 
-    ![image-20231019163707545](D:\云原生\istio\images\image-20231019163707545.png)
+    ![image-20231019163707545](images/image-20231019163707545.png)
 
   - 为用户添加认证凭据，使用密码作为认证凭据
 
-    ![image-20231019163910043](D:\云原生\istio\images\image-20231019163910043.png)
+    ![image-20231019163910043](images/image-20231019163910043.png)
 
   - 访问测试
 
@@ -5658,11 +5658,11 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
       curl -d "username=kiali&password=123456&grant_type=password&client_id=ingress-gateway&client_secret=uSv06vUrD9s9X4LdZjI4xI8zV5Veg6wn" http://keycloak.keycloak.svc.cluster.local:8080/auth/realms/istio/protocol/openid-connect/token
       ```
 
-      ![image-20231019164457298](D:\云原生\istio\images\image-20231019164457298.png)
+      ![image-20231019164457298](images/image-20231019164457298.png)
 
     - 用kiali/123456用户密码登录，可以登录成功
 
-      ![image-20231019171402858](D:\云原生\istio\images\image-20231019171402858.png)
+      ![image-20231019171402858](images/image-20231019171402858.png)
 
 - [ ] 第十步：为开放Bookinfo服务添加路由
 
@@ -5716,15 +5716,15 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
 
   - 配置完成后，首次访问bookinfo.icloud2native.com，将会跳转到Keyloack认证页面
 
-    ![image-20231019172423218](D:\云原生\istio\images\image-20231019172423218.png)
+    ![image-20231019172423218](images/image-20231019172423218.png)
 
   - 用kiali/123456用户密码登录，可以登录成功
 
-    ![image-20231019172534765](D:\云原生\istio\images\image-20231019172534765.png)
+    ![image-20231019172534765](images/image-20231019172534765.png)
 
   - 同一浏览器登录kiali.icloud2native.com。不在需要用户名和密码，直接能登陆，这就是SSO，换浏览器，还需要重新登录
 
-    ![image-20231019172649874](D:\云原生\istio\images\image-20231019172649874.png)
+    ![image-20231019172649874](images/image-20231019172649874.png)
 
 # 5. Istio部署模型
 
@@ -5835,7 +5835,7 @@ while true; do curl -H 'host: nginx.icloud2native.com'  192.168.170.100;sleep 0.
   - 验证Pod的相关配置：istioctl experimental describe pod <pod> [flags]
   - 获取service的路由：istioctl experimental describe service <svc> [flags]
 
-  ![image-20231019175543214](D:\云原生\istio\images\image-20231019175543214.png)
+  ![image-20231019175543214](images/image-20231019175543214.png)
 
 
 
