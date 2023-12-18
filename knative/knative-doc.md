@@ -45,7 +45,7 @@
 
 - [ ] BaaS处理整个后端功能，而FaaS仅处理应用程序中支持相应的事件
 
-  ![image-20231103145754858](images\image-20231103145754858.png)
+  ![image-20231103145754858](images/image-20231103145754858.png)
 
 ## 1.3 Serverless的优缺点
 
@@ -84,11 +84,11 @@
 
 - [ ] 基于kubernetes平台，用于部署和管理现代serverless工作负载，是serverless平台，而非serverless实现
 
-  ![image-20231103162246484](images\image-20231103162246484.png)
+  ![image-20231103162246484](images/image-20231103162246484.png)
 
 - [ ] 若能够把kubernetes看作是一个分布式内核，则Knative也可被类比为该内核之上的分布式libc；
 
-  ![image-20231103162509480](images\image-20231103162509480.png)
+  ![image-20231103162509480](images/image-20231103162509480.png)
 
 ## 2.2 Knative项目
 
@@ -148,7 +148,7 @@
     - 将请求流量路由到目标Revision
     - 支持将流量按比例切分并路由到多个Revision
 
-  ![image-20231103165903647](images\image-20231103165903647.png)
+  ![image-20231103165903647](images/image-20231103165903647.png)
 
 ### 2.3.1 Knative Eventing
 
@@ -178,7 +178,7 @@
   - 各资源者是松散耦合关系，可分别独立开发和部署
   - 遵循CloudEvents规范
 
-  ![image-20231103171235066](images\image-20231103171235066.png)
+  ![image-20231103171235066](images/image-20231103171235066.png)
 
 ## 2.4 重点说明
 
@@ -350,7 +350,7 @@
      kubectl edit svc istio-ingressgateway -n istio-system
     ```
 
-    ![image-20231113175742343](images\image-20231113175742343.png)
+    ![image-20231113175742343](images/image-20231113175742343.png)
 
 - [ ] 运行一个demo的service
 
@@ -382,7 +382,7 @@
   kubectl get ksvc
   ```
 
-  ![image-20231113181005442](images\image-20231113181005442.png)
+  ![image-20231113181005442](images/image-20231113181005442.png)
 
   本机测试：
 
@@ -420,7 +420,7 @@
 
 ### 3.3.1 serving工作模式
 
-![image-20231114155501270](images\image-20231114155501270.png)
+![image-20231114155501270](images/image-20231114155501270.png)
 
 ### 3.3.2 Queue Proxy
 
@@ -437,7 +437,7 @@
   - 8022：管理端口，如健康状态检测等；
   - 9090：暴露给Autoscaler进行指标采集的端口
   - 9091：暴露给prometheus进行监控指标采集的端口
-  - ![image-20231114160453034](images\image-20231114160453034.png)
+  - ![image-20231114160453034](images/image-20231114160453034.png)
 
 ### 3.3.3 运行knative应用
 
@@ -461,11 +461,11 @@
 
   - 获取由kservice/hello自动创建的Configuration, Revision,Deployment和PodAutoscaler
 
-    ![image-20231114163610803](images\image-20231114163610803.png)
+    ![image-20231114163610803](images/image-20231114163610803.png)
 
   - 获取由kservice/hello自动创建的Route,service和virtualservice
 
-    ![image-20231114163832016](images\image-20231114163832016.png)
+    ![image-20231114163832016](images/image-20231114163832016.png)
 
 - [ ] 访问kservice/hello
 
@@ -487,7 +487,7 @@
     kubectl run client --image=ikubernetes/admin-box:v1.2 --restart=Never --rm -it --command -- /bin/bash
     ```
 
-    ![image-20231114165046867](images\image-20231114165046867.png)
+    ![image-20231114165046867](images/image-20231114165046867.png)
 
   - 在集群外部访问
 
@@ -495,7 +495,7 @@
     curl -H "Host: hello.default.example.com" http://192.168.58.100
     ```
 
-    ![image-20231114165415908](images\image-20231114165415908.png)
+    ![image-20231114165415908](images/image-20231114165415908.png)
 
 #### 3.3.3.1 Knative Serving资源规范
 
@@ -650,7 +650,7 @@
   kn service create hello --image ikubernetes/helloworld-go --port 8080 --env TARGET=World
   ```
 
-  ![image-20231114200410887](images\image-20231114200410887.png)
+  ![image-20231114200410887](images/image-20231114200410887.png)
 
 - [ ] 集群外请求
 
@@ -658,7 +658,7 @@
   curl -H "Host: hello.default.icloud2native.com" http://192.168.58.100
   ```
 
-  ![image-20231114200537359](images\image-20231114200537359.png)
+  ![image-20231114200537359](images/image-20231114200537359.png)
 
 #### 3.3.5.2 配置自定义域名
 
@@ -673,7 +673,7 @@
        kubectl patch configmap config-network -n knative-serving -p '{"data":{"autocreate-cluster-domain-claims":"true"}}’
       ```
 
-      ![image-20231114202309077](images\image-20231114202309077.png)
+      ![image-20231114202309077](images/image-20231114202309077.png)
 
     - 手动创建相关的CDC资源，名称为要映射的外部域名。基于CDC资源规范信息，仅需要指定名称，且namespace要在spec字段中定义
 
@@ -743,7 +743,7 @@
     curl -H "Host: hello.icloud2native.com" http://192.168.58.100
     ```
 
-    ![image-20231114204025649](images\image-20231114204025649.png)
+    ![image-20231114204025649](images/image-20231114204025649.png)
 
 ## 3.4 Revision和流量管理
 
@@ -836,7 +836,7 @@
 
   - 目前有2个revision，默认100%流量会到最新的那个reviision
 
-    ![image-20231116104126959](D:\云原生\knative\images\image-20231116104126959.png)
+    ![image-20231116104126959](images/image-20231116104126959.png)
 
   - 将流量完全发送给hello-00001这个Revision(rollback)
 
@@ -846,7 +846,7 @@
 
     可以发现立即生效，所有的流量立马切换到Hello-00001的Revision：
 
-    ![image-20231116104708811](images\image-20231116104708811.png)
+    ![image-20231116104708811](images/image-20231116104708811.png)
 
   - 将流量切分至不同的Reviision
 
@@ -856,7 +856,7 @@
 
     验证：
 
-    ![image-20231116105133967](images\image-20231116105133967.png)
+    ![image-20231116105133967](images/image-20231116105133967.png)
 
   - 将流量完全发送至最新的版本Revision
 
@@ -866,7 +866,7 @@
 
     验证：将全部流量发送给最新的Revision
 
-    ![image-20231116105429309](images\image-20231116105429309.png)
+    ![image-20231116105429309](images/image-20231116105429309.png)
 
 - [ ] 资源配置清单
 
@@ -899,9 +899,9 @@
 
     验证：基本7-2-1比例
 
-    ![image-20231116110444912](images\image-20231116110444912.png)
+    ![image-20231116110444912](images/image-20231116110444912.png)
 
-    ![image-20231116110509483](images\image-20231116110509483.png)
+    ![image-20231116110509483](images/image-20231116110509483.png)
 
 ### 3.4.5 路由标签（tag）
 
@@ -956,7 +956,7 @@
       kubectl get ksvc hello -o yaml
       ```
 
-      ![image-20231116112519600](images\image-20231116112519600.png)
+      ![image-20231116112519600](images/image-20231116112519600.png)
 
     - 访问带tag的revision 00001
 
@@ -964,7 +964,7 @@
       curl -H "Host: staging-hello.default.icloud2native.com" 192.168.58.100
       ```
 
-      ![image-20231116112647534](images\image-20231116112647534.png)
+      ![image-20231116112647534](images/image-20231116112647534.png)
 
 ### 3.4.6 Configuration Target和流量逐步迁移
 
@@ -1014,7 +1014,7 @@
   - Knative附带了开箱即用的AutoScaler，简称KPA；
   - 同时，Knative还支持使用Kubernetes HPA进行Deployment缩放
 
-  ![image-20231116142134892](images\image-20231116142134892.png)
+  ![image-20231116142134892](images/image-20231116142134892.png)
 
 - [ ] Autoscaler在扩缩容功能上实现的基本假设
 
@@ -1022,7 +1022,7 @@
   - 请求不能导致应用过载
   - 系统不能造成无谓的资源浪费
 
-  ![image-20231116144434348](images\image-20231116144434348.png)
+  ![image-20231116144434348](images/image-20231116144434348.png)
 
 ### 3.5.2 请求如何驱动计算
 
@@ -1038,7 +1038,7 @@
   - Autoscaler基于过去一段时间内（stable windows指定）统计的指标(metrics)数据和单个实例的目标并发数(target)来计算目标实例数
   - 计算出的目标实例数将发送给相应的Revision的Deployment执行缩放操作
 
-  ![image-20231116145234415](images\image-20231116145234415.png)
+  ![image-20231116145234415](images/image-20231116145234415.png)
 
 ### 3.5.3 Autoscaler执行扩缩容的基本流程
 
@@ -1058,15 +1058,15 @@
   - Autoscaler在Queue-Proxy持续一段时间报告指标为0后，即将其Pod缩减为0
   - 随后，Ingress GW会将收到的请求再次转发给Activator
 
-  ![image-20231116150109954](images\image-20231116150109954.png)
+  ![image-20231116150109954](images/image-20231116150109954.png)
 
 #### 3.5.3.1 零实例时收到请求的工作流程
 
-![image-20231116150225703](images\image-20231116150225703.png)
+![image-20231116150225703](images/image-20231116150225703.png)
 
 #### 3.5.3.2 非零实例时
 
-![image-20231116150313869](images\image-20231116150313869.png)
+![image-20231116150313869](images/image-20231116150313869.png)
 
 ### 3.5.4 缩放窗口和Panic
 
@@ -1084,7 +1084,7 @@
   - 横轴（现有实例数量）：0个、1个和M个
   - 纵轴（到达的请求数）： 0个、1个和N个
 
-  ![image-20231116151351558](images\image-20231116151351558.png)
+  ![image-20231116151351558](images/image-20231116151351558.png)
 
 ### 3.5.5 Autoscaler计算Pod数的基本逻辑
 
@@ -1263,7 +1263,7 @@
 
   - 结论发现确实有4个实例创建，符合预期
 
-    ![image-20231116161946343](images\image-20231116161946343.png)
+    ![image-20231116161946343](images/image-20231116161946343.png)
 
 #### 3.5.6.5 配置Revision的扩缩容边界
 
@@ -1322,7 +1322,7 @@
 
   - 可以发现，最多有3个pod创建
 
-    ![image-20231116163347678](images\image-20231116163347678.png)
+    ![image-20231116163347678](images/image-20231116163347678.png)
 
 #### 3.5.6.6 使用rps指标
 
@@ -1374,7 +1374,7 @@
 
   - 验证：相应Revision上的实例数量会扩展至多个，但最多不超过10个
 
-    ![image-20231116165841221](images\image-20231116165841221.png)
+    ![image-20231116165841221](images/image-20231116165841221.png)
 
 # 4、knative-eventing
 
@@ -1434,7 +1434,7 @@
     - 若多个Receiver尝试消息同一个消息，Channel需要确保仅有一个能成功；
     - 各Receiver之间无须互相协调
 
-  ![image-20231201101501254](images\image-20231201101501254.png)
+  ![image-20231201101501254](images/image-20231201101501254.png)
 
 - [ ] Pub/Sub Channel：向多个感兴趣者广播事件
 
@@ -1443,7 +1443,7 @@
   - 每个输出Channel只有一个订阅者，只允许使用一次消息
     - 消息被订阅者接收后，Channel中的消息副本会消失
 
-  ![image-20231201101815733](images\image-20231201101815733.png)
+  ![image-20231201101815733](images/image-20231201101815733.png)
 
 ### 4.1.3 消息和消息路由
 
@@ -1457,7 +1457,7 @@
   - 过滤器：基于特定的规则筛选符合条件的消息
   - 路由器：将过滤器筛选出的消息路由至既定的目标Channel
 
-  ![image-20231201102153614](images\image-20231201102153614.png)
+  ![image-20231201102153614](images/image-20231201102153614.png)
 
 ### 4.1.4 Channel与数据类型
 
@@ -1480,7 +1480,7 @@
   - 各应用程序遵循通用共享模式的消息，包括数据类型
   - 发送的消息可能仅被传递（广播）到所有连接的系统
 
-  ![image-20231201102923121](images\image-20231201102923121.png)
+  ![image-20231201102923121](images/image-20231201102923121.png)
 
 - [ ] 消息代理（Message Broker）
 
@@ -1492,7 +1492,7 @@
   - 支持消息格式转换以适配至不同应用程序的期望
   - 支持额外的消息服务，如消息的路由、聚合和拆分
 
-  ![image-20231201103001749](images\image-20231201103001749.png)
+  ![image-20231201103001749](images/image-20231201103001749.png)
 
 ### 4.1.6 事件
 
@@ -1533,7 +1533,7 @@
   - 消费者：负责接收、解析和处理事件
   - 事件总线：负责存储事件，从而将生产者和消费者解耦
 
-![image-20231201110006501](images\image-20231201110006501.png)
+![image-20231201110006501](images/image-20231201110006501.png)
 
 ### 4.1.8 CloudEvents
 
@@ -1553,7 +1553,7 @@
     - 传输协议：支持行业的各种标准协议（如HTTP、AMQP、MQTT和SMTP等）、开源协议（如Kafka和NATS），以及平台/供应商的特有协议；
     - 动作通常是由特定来源的特定事件触发，是专门负责处理该类事件代码块，这些代码块可运行于Serverless Function逻辑中；
 
-    ![image-20231201142607677](images\image-20231201142607677.png)
+    ![image-20231201142607677](images/image-20231201142607677.png)
 
 #### 4.1.8.1 CloudEvents core规范中的事件格式
 
@@ -1576,7 +1576,7 @@
   }
   ```
 
-  ![image-20231201143322641](images\image-20231201143322641.png)
+  ![image-20231201143322641](images/image-20231201143322641.png)
 
 #### 4.1.8.2 CloudEvents 中的序列化规范
 
@@ -1594,7 +1594,7 @@
 
     - 示例：
 
-      ![image-20231201151835404](images\image-20231201151835404.png)
+      ![image-20231201151835404](images/image-20231201151835404.png)
 
   - HTTP消息映射（方式二）
 
@@ -1662,7 +1662,7 @@
     kubectl get pods -n knative-eventing
     ```
 
-    ![image-20231201162702742](images\image-20231201162702742.png)
+    ![image-20231201162702742](images/image-20231201162702742.png)
 
   - 部署一个channel layer，这里选择In-Memory(测试环境)
 
@@ -1670,7 +1670,7 @@
     kubectl apply -f https://github.com/knative/eventing/releases/download/knative-v1.12.1/in-memory-channel.yaml
     ```
 
-    ![image-20231201162829048](images\image-20231201162829048.png)
+    ![image-20231201162829048](images/image-20231201162829048.png)
 
   - 安装Broker Layer，这里选择**MT-Channel-based**
 
@@ -1678,15 +1678,15 @@
     kubectl apply -f https://github.com/knative/eventing/releases/download/knative-v1.12.1/mt-channel-broker.yaml
     ```
 
-    ![image-20231201163748104](images\image-20231201163748104.png)
+    ![image-20231201163748104](images/image-20231201163748104.png)
 
     - 可以自定义名称空间级别的使用的broker
 
-      ![image-20231201163957539](images\image-20231201163957539.png)
+      ![image-20231201163957539](images/image-20231201163957539.png)
 
     - 如果使用MT-Channel-based的broker，可以配置要使用的channel
 
-      ![image-20231201164144437](images\image-20231201164144437.png)
+      ![image-20231201164144437](images/image-20231201164144437.png)
 
 ## 4.3 Eventing及实践
 
@@ -1716,7 +1716,7 @@
 - [ ] Flow：事件处理流，可简单地手工定义流，也可使用专用的API进行定义
 - [ ] Event Sinks：能接收Event的可寻址（Addressable）或可调用（Callable）资源，例如KService等
 
-![image-20231201165157197](images\image-20231201165157197.png)
+![image-20231201165157197](images/image-20231201165157197.png)
 
 ### 4.3.3 Knative的事件传递模式
 
@@ -1730,7 +1730,7 @@
     - Event Source的职责仅是传递消息，且无需等待Sink响应
     - fire and forget
 
-    ![image-20231201165503024](images\image-20231201165503024.png)
+    ![image-20231201165503024](images/image-20231201165503024.png)
 
   - Channels and Subscriptions
 
@@ -1739,7 +1739,7 @@
     - Channel中的每个事件都被格式化Cloud Event并发送至各Subscription
     - 不支持消息过滤机制
 
-    ![image-20231201165712536](images\image-20231201165712536.png)
+    ![image-20231201165712536](images/image-20231201165712536.png)
 
   - Brokers and Triggers
 
@@ -1749,7 +1749,7 @@
     - Trigger将消息传递给感兴趣的Subscription之前，还需要负责完成消息的格式化
     - 这是在生产中推荐使用的消息投递模式
 
-    ![image-20231201165916950](images\image-20231201165916950.png)
+    ![image-20231201165916950](images/image-20231201165916950.png)
 
 ### 4.3.4 CloudEvents示例
 
@@ -1767,7 +1767,7 @@
     kn service create event-display --image ikubernetes/event_display --port 8080 --scale-min 1
     ```
 
-    ![image-20231201170622303](images\image-20231201170622303.png)
+    ![image-20231201170622303](images/image-20231201170622303.png)
 
   - 启动一个client的pod，发起请求测试
 
@@ -1789,7 +1789,7 @@
     -d '{"msg":"Hello littlyboy Knative!"}'
     ```
 
-    ![image-20231201171603396](images\image-20231201171603396.png)
+    ![image-20231201171603396](images/image-20231201171603396.png)
 
   - 查看event_display中的log是否收到事件
 
@@ -1797,7 +1797,7 @@
     kubectl logs -f event-display-00001-deployment-5ddb97ff7-mfhhq
     ```
 
-    ![image-20231201171822211](images\image-20231201171822211.png)
+    ![image-20231201171822211](images/image-20231201171822211.png)
 
 ### 4.3.5 Eventing的逻辑组件
 
@@ -1810,7 +1810,7 @@
     - PingSource：以周期性任务（cron）的方式生具有固定负载的事件
     - SinkBinding：链接任何可寻址的Kubernetes资源，以接收来自可能产生事件的任何其他Kubernetes资源
 
-    ![image-20231201172207568](images\image-20231201172207568.png)
+    ![image-20231201172207568](images/image-20231201172207568.png)
 
   - eventing.knative.dev # 声明式配置“事件网格模型”的API
 
@@ -1830,14 +1830,14 @@
 
 ### 4.3.6 事件与Knative Eventing
 
-![image-20231201172550614](images\image-20231201172550614.png)
+![image-20231201172550614](images/image-20231201172550614.png)
 
 - [ ] Knative Eventing
   - 负责为事件的生产和消费提供基础设施，可将事件从生产者路由到目标消费者，从而让开发人员能够使用事件驱动架构
   - 各资源者是松散耦合关系，可分别独立开发和部署
   - 遵循CloudEvents规范
 
-![image-20231201172913328](images\image-20231201172913328.png)
+![image-20231201172913328](images/image-20231201172913328.png)
 
 ## 4.4 Event Sources和Sink架构
 
@@ -1845,7 +1845,7 @@
 
 - [ ] 架构模型
 
-  ![image-20231204141844795](images\image-20231204141844795.png)
+  ![image-20231204141844795](images/image-20231204141844795.png)
 
 - [ ] 示例1
 
@@ -1903,7 +1903,7 @@
 
     后面`knative-eventing`的namespace会出现pingsource的POD
 
-    ![image-20231204143828829](images\image-20231204143828829.png)
+    ![image-20231204143828829](images/image-20231204143828829.png)
 
   - 获取event-display当中的日志信息，验证是否进行了事件发送
 
@@ -1911,13 +1911,13 @@
     kubectl logs -f event-display-6496b6c66d-7drk5
     ```
 
-    ![image-20231204143956139](images\image-20231204143956139.png)
+    ![image-20231204143956139](images/image-20231204143956139.png)
 
 ### 4.4.2 PingSource → Knative Service Sink
 
 - [ ] 架构
 
-  ![image-20231204144144598](images\image-20231204144144598.png)
+  ![image-20231204144144598](images/image-20231204144144598.png)
 
 - [ ] 示例2
 
@@ -1966,13 +1966,13 @@
     kubectl logs -f event-display-00001-deployment-7f488cb57b-grsc6
     ```
 
-    ![image-20231204145918727](images\image-20231204145918727.png)
+    ![image-20231204145918727](images/image-20231204145918727.png)
 
 ### 4.4.3 ContainerSource → Knative Service Sink
 
 - [ ] 旨在收集一些容器的event是，比如容器的一些元数据，下面是架构：
 
-  ![image-20231204151738222](images\image-20231204151738222.png)
+  ![image-20231204151738222](images/image-20231204151738222.png)
 
 - [ ] 示例2
 
@@ -2027,7 +2027,7 @@
 
     在event-display的名称空间创建了一个containersource的pod
 
-    ![image-20231204152501272](images\image-20231204152501272.png)
+    ![image-20231204152501272](images/image-20231204152501272.png)
 
   - 获取event-display当中的日志信息，验证是否进行了事件发送
 
@@ -2035,13 +2035,13 @@
     kubectl logs -f event-display-00001-deployment-645944b779-2b4vt
     ```
 
-    ![image-20231204152647678](images\image-20231204152647678.png)
+    ![image-20231204152647678](images/image-20231204152647678.png)
 
 ### 4.4.4 ApiServerSource → Knative Service Sink
 
 - [ ] apiserversource主要记录了aoiserver上的event，比如create/delete/update/get，架构如下：
 
-  ![image-20231204153456515](images\image-20231204153456515.png)
+  ![image-20231204153456515](images/image-20231204153456515.png)
 
 - [ ] 示例4：
 
@@ -2122,7 +2122,7 @@
 
     会发现创建一个apiserversource的pod
 
-    ![image-20231204154051263](images\image-20231204154051263.png)
+    ![image-20231204154051263](images/image-20231204154051263.png)
 
   - 获取event-display当中的日志信息，验证是否进行了事件发送
 
@@ -2130,7 +2130,7 @@
     kubectl logs -f event-display-00001-deployment-9469968cd-vb4l2 
     ```
 
-    ![image-20231204154228706](images\image-20231204154228706.png)
+    ![image-20231204154228706](images/image-20231204154228706.png)
 
 ### 4.4.5 GitLab Source
 
@@ -2159,7 +2159,7 @@
   - GitLab服务上隶于某个用户（例如root）的代码仓库（例如myproject）
   - 负责接收CloudEvents的kservice/event-display
 
-  ![image-20231204160742787](images\image-20231204160742787.png)
+  ![image-20231204160742787](images/image-20231204160742787.png)
 
 - [ ] 具体步骤
 
@@ -2208,7 +2208,7 @@
   - kservice/event-display订阅channel/imc01
   - curl命令作为event source，基于HTTP协议推送消息至channel/imc01
 
-  ![image-20231204164015577](images\image-20231204164015577.png)
+  ![image-20231204164015577](images/image-20231204164015577.png)
 
 - [ ] 具体步骤
 
@@ -2235,7 +2235,7 @@
     kn channel list
     ```
 
-    ![image-20231204170552902](images\image-20231204170552902.png)
+    ![image-20231204170552902](images/image-20231204170552902.png)
 
   - 创建2个Sink: kservice/event-display01/kservice/event-display02
 
@@ -2320,7 +2320,7 @@
 
     查看subscription：
 
-    ![image-20231204170827921](images\image-20231204170827921.png)
+    ![image-20231204170827921](images/image-20231204170827921.png)
 
   - 验证
 
@@ -2337,7 +2337,7 @@
       -d '{"id": "say-hello", "specversion": "1.0", "type": "com.icloud2native.sayhi", "source": "sendoff", "data": {"msg":"Hello Knative imc01 Channel"}}'
       ```
 
-      ![image-20231204171230884](images\image-20231204171230884.png)
+      ![image-20231204171230884](images/image-20231204171230884.png)
 
     - 在sink1: event-display01查看log，能收到相关的event
 
@@ -2345,7 +2345,7 @@
       kubectl logs -f event-display01-00001-deployment-64cd5c8866-48t4m
       ```
 
-      ![image-20231204171022536](images\image-20231204171022536.png)
+      ![image-20231204171022536](images/image-20231204171022536.png)
 
     - 在sink2: event-display02查看log，能收到相关的event
 
@@ -2353,7 +2353,7 @@
       kubectl logs -f event-display02-00001-deployment-664ccfc45d-k96zz
       ```
 
-      ![image-20231204171147749](images\image-20231204171147749.png)
+      ![image-20231204171147749](images/image-20231204171147749.png)
 
 ### 4.5.2 Broker/Triger
 
@@ -2366,7 +2366,7 @@
   - 然后，通过队列（或Topic），将消息传递给消费者
   -  Kafka、RabbitMQ、ActiveMQ和RocketMQ是较为常见的代表产品
 
-  ![image-20231204172344258](images\image-20231204172344258.png)
+  ![image-20231204172344258](images/image-20231204172344258.png)
 
 - [ ] 消息代理模式
 
@@ -2383,7 +2383,7 @@
       - 消费者也可以在Partition级别订阅
     - 广播式分发机制，消息的发布者与消息的消费者之间存在“一对多”的关系
 
-    ![image-20231204173246588](images\image-20231204173246588.png)
+    ![image-20231204173246588](images/image-20231204173246588.png)
 
 #### 4.5.2.2 Knative的Broker/Trigger 消息传递框架
 
@@ -2395,7 +2395,7 @@
   - Trigger基于属性过滤事件，并将筛选出的的事件投递给订阅该Trigger的Subscriber
   - Subscriber还可生成响应事件，并将这些新生成的事件传入Broker
 
-  ![image-20231204173641976](images\image-20231204173641976.png)
+  ![image-20231204173641976](images/image-20231204173641976.png)
 
 #### 4.5.2.3 knative Broker
 
@@ -2414,7 +2414,7 @@
     - RabbitMQ Broker
     - GCP Broker
 
-    ![image-20231204174054157](images\image-20231204174054157.png)
+    ![image-20231204174054157](images/image-20231204174054157.png)
 
 - [ ] Knative Serving在名称空间级别提供了一个名为default的默认Broker，但使用前需要通过某种方式先行完成创建
 
@@ -2452,7 +2452,7 @@
     - 基于HTTP协议推送消息至broker
     - Trigger基于类型过滤事件并完成分发
 
-  ![image-20231204175120571](images\image-20231204175120571.png)
+  ![image-20231204175120571](images/image-20231204175120571.png)
 
 - [ ] 具体步骤
 
@@ -2463,7 +2463,7 @@
     $ kn service create event-display-bye --image ikubernetes/event_display --port 8080 --scale-min 1
     ```
 
-    ![image-20231204180537477](images\image-20231204180537477.png)
+    ![image-20231204180537477](images/image-20231204180537477.png)
 
     ```yaml
     ---
@@ -2512,7 +2512,7 @@
      name: default
     ```
 
-    ![image-20231204180646749](images\image-20231204180646749.png)
+    ![image-20231204180646749](images/image-20231204180646749.png)
 
   - 创建trigger：两个trigger分别过滤了不同类型的事件
 
@@ -2560,7 +2560,7 @@
     kn trigger list
     ```
 
-    ![image-20231204180734914](images\image-20231204180734914.png)
+    ![image-20231204180734914](images/image-20231204180734914.png)
 
   - 测试验证：event-display-hi的sink只收到hi的event，event-display-bye的sink只收到bye的event
 
@@ -2580,17 +2580,17 @@
       -d '{"id": "say-bye", "specversion": "1.0", "type": "com.icloud2native.saybye", "source": "sendoff", "data": {"msg":"Hello Knative default Broker Say BYE"}}'
       ```
 
-      ![image-20231204181423343](images\image-20231204181423343.png)
+      ![image-20231204181423343](images/image-20231204181423343.png)
 
-      ![image-20231204181508308](images\image-20231204181508308.png)
+      ![image-20231204181508308](images/image-20231204181508308.png)
 
     -  获取event-display-hi中的日志信息，验证是否仅存在sayhi类型的事件
 
-      ![image-20231204181601718](images\image-20231204181601718.png)
+      ![image-20231204181601718](images/image-20231204181601718.png)
 
     - 获取event-display-bye中的日志信息，验证是否仅存在saybye类型的事件
 
-      ![image-20231204181655805](images\image-20231204181655805.png)
+      ![image-20231204181655805](images/image-20231204181655805.png)
 
 ## 4.6 Flow
 
@@ -2611,7 +2611,7 @@
   -  接收CloudEvents
   - （可选）回复处理后的数据
 
-  ![image-20231205103820204](images\image-20231205103820204.png)
+  ![image-20231205103820204](images/image-20231205103820204.png)
 
 - [ ] Sequence
 
@@ -2620,7 +2620,7 @@
   - 由多个有序的Step组成，每个step定义一个Subscriber
   - Step间的channel，由channeltemplate定义
 
-  ![image-20231205110454582](images\image-20231205110454582.png)
+  ![image-20231205110454582](images/image-20231205110454582.png)
 
 - [ ] Parallel：根据不同的过滤条件对事件进行选择处理
 
@@ -2629,7 +2629,7 @@
     - 每个Filter即为一个Processor
   -  Channel由由ChannelTemplate定义
 
-  ![image-20231205110745518](images\image-20231205110745518.png)
+  ![image-20231205110745518](images/image-20231205110745518.png)
 
 ### 4.6.2 Sequence Flow示例
 
@@ -2652,7 +2652,7 @@
     - 分别向收到的数据尾部附加自定义的专有数据项
   - 最终结果发往ksvc/event-display，进行展示
 
-  ![image-20231205111905076](images\image-20231205111905076.png)
+  ![image-20231205111905076](images/image-20231205111905076.png)
 
 - [ ] 准备实践环境
 
@@ -2706,7 +2706,7 @@
     ---
     ```
 
-    ![image-20231205144908857](images\image-20231205144908857.png)
+    ![image-20231205144908857](images/image-20231205144908857.png)
 
   - 负责最后接收事件的Kservice/event-display
 
@@ -2770,7 +2770,7 @@
     # URL中的地址，即为当前sequence的调用接口
     ```
 
-    ![image-20231205145150186](images\image-20231205145150186.png)
+    ![image-20231205145150186](images/image-20231205145150186.png)
 
   - 测试
 
@@ -2787,11 +2787,11 @@
       -d '{"id": "0", "specversion": "1.0", "type": "com.icloud2native.sayhi", "source": "Curl", "data": {"message":"Hello Knative Eventing Flow"}}'
       ```
 
-      ![image-20231205145713098](images\image-20231205145713098.png)
+      ![image-20231205145713098](images/image-20231205145713098.png)
 
     - 在最后一个event-display的日志中查看事件
 
-      ![image-20231205145954878](images\image-20231205145954878.png)
+      ![image-20231205145954878](images/image-20231205145954878.png)
 
 ### 4.6.3 Parallel Flow 示例
 
@@ -2816,7 +2816,7 @@
     - 使用kservice/text-filter作为Filter，筛选类型为“com.icloud2native.file.text”的事件，相应的Subscriber为ksvc/para-appender-text ，负责将该类事件信息标识为Text；
   - 所有分支的最终结果均发往ksvc/event-display，内容格式化CloudEvents存储入日志
 
-  ![image-20231205151248320](images\image-20231205151248320.png)
+  ![image-20231205151248320](images/image-20231205151248320.png)
 
 - [ ] 具体步骤
 
@@ -2858,7 +2858,7 @@
     ---
     ```
 
-    ![image-20231205152549099](images\image-20231205152549099.png)
+    ![image-20231205152549099](images/image-20231205152549099.png)
 
   - 创建两个subscriber
 
@@ -2897,7 +2897,7 @@
     ---
     ```
 
-    ![image-20231205153239735](images\image-20231205153239735.png)
+    ![image-20231205153239735](images/image-20231205153239735.png)
 
   - 负责最后接收事件的Kservice/event-display
 
@@ -2952,7 +2952,7 @@
      # URL中的地址，即为当前Parallel资源的调用接
     ```
 
-    ![image-20231205153658095](images\image-20231205153658095.png)
+    ![image-20231205153658095](images/image-20231205153658095.png)
 
   - 测试
 
@@ -2986,7 +2986,7 @@
 
     - 在ksvc/event-display的日志中查看事件数据，验证事件是否被不同的branch做了不同的处理
 
-      ![image-20231205154734053](images\image-20231205154734053.png)
+      ![image-20231205154734053](images/image-20231205154734053.png)
 
 ## 4.7 Kafka 与 Eventing
 
@@ -2998,7 +2998,7 @@
   - Availability & Reliability：以容错及持久化的方式存储数据记录流
   - Scalable & Real time
 
-  ![image-20231212100421141](images\image-20231212100421141.png)
+  ![image-20231212100421141](images/image-20231212100421141.png)
 
 #### 4.7.1.1 Kafka架构体系
 
@@ -3014,7 +3014,7 @@
   - Topic
   - Partition
 
-![image-20231212101059692](images\image-20231212101059692.png)
+![image-20231212101059692](images/image-20231212101059692.png)
 
 #### 4.7.1.2 Topic和Partition
 
@@ -3027,7 +3027,7 @@
 
   - Topic是Producer发布消息，以及consumer消费消息使用的端点
 
-    ![image-20231212105259211](images\image-20231212105259211.png)
+    ![image-20231212105259211](images/image-20231212105259211.png)
 
 #### 4.7.1.3 Topic中的消息记录
 
@@ -3071,7 +3071,7 @@
     - Knativing Eventing Broker的实现之一，功能与MT-Channel-Based Broker功能类似；
     - 依赖与Kafka Channel类型的Channel实现
   
-    ![image-20231218140400317](images\image-20231218140400317.png)
+    ![image-20231218140400317](images/image-20231218140400317.png)
 
 ### 4.7.3 部署Kafka
 
@@ -3100,7 +3100,7 @@
     kubectl get pods -n kafka
     ```
 
-    ![image-20231218142607788](images\image-20231218142607788.png)
+    ![image-20231218142607788](images/image-20231218142607788.png)
 
   - 查看生成的CRD
 
@@ -3108,7 +3108,7 @@
     kubectl api-resources --api-group=kafka.strimzi.io
     ```
 
-    ![image-20231218142715664](images\image-20231218142715664.png)
+    ![image-20231218142715664](images/image-20231218142715664.png)
 
 - [ ] 部署Kafka示例集群
 
@@ -3132,7 +3132,7 @@
     kubectl get pods -n kafka
     ```
 
-    ![image-20231218145613069](images\image-20231218145613069.png)
+    ![image-20231218145613069](images/image-20231218145613069.png)
 
   - 部署集群时,还会自动为集群生成几个相关的Service资源，其中的bootstrap是集群消息服务的访问端点，如下面示例中的my-cluster-kafka-bootstrap
 
@@ -3140,7 +3140,7 @@
     kubectl get svc -n kafka
     ```
 
-    ![image-20231218145653378](images\image-20231218145653378.png)
+    ![image-20231218145653378](images/image-20231218145653378.png)
 
 ### 4.7.4 部署Kafkasource和KafkaChannel
 
@@ -3177,7 +3177,7 @@
     kubectl get cm kafka-channel-config -n knative-eventing -o yaml
     ```
 
-    ![image-20231218154833306](images\image-20231218154833306.png)
+    ![image-20231218154833306](images/image-20231218154833306.png)
 
   - 修改Default Channel的`default-ch-webhook`相关配置: 可以在全局修改，也可以在某个名称空间修改
 
