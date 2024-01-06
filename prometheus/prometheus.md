@@ -12,7 +12,7 @@
 
 ## 1.1：监控逻辑布局
 
-![image-20231223142555353](images\image-20231223142555353.png)
+![image-20231223142555353](images/image-20231223142555353.png)
 
 ## 1.2：常见的监控方案
 
@@ -117,7 +117,7 @@ push gateway：数据收集代理服务器（类似于zabbix proxy）
 data visualization and export：数据可视化与数据导出
 ```
 
-![image-20231223151118133](images\image-20231223151118133.png)
+![image-20231223151118133](images/image-20231223151118133.png)
 
 # 二：部署prometheus监控系统
 
@@ -158,7 +158,7 @@ kube-prometheus v0.13.0
 
 ### 2.2.2：验证Pod状态
 
-![image-20231223154312163](images\image-20231223154312163.png)
+![image-20231223154312163](images/image-20231223154312163.png)
 
 ### 2.2.3：通过NodePort访问Prometheus Server
 
@@ -212,7 +212,7 @@ prometheus-operator     ClusterIP   None             <none>        8443/TCP     
 
 ### 2.2.4：验证prometheus web界面
 
-![image-20231223202016836](images\image-20231223202016836.png)
+![image-20231223202016836](images/image-20231223202016836.png)
 
 ### 2.2.5：通过NodePort访问Grafana
 
@@ -284,7 +284,7 @@ prometheus-operator     ClusterIP   None             <none>        8443/TCP     
 
 ### 2.2.6 :验证grafana界面
 
-![image-20231223203701998](images\image-20231223203701998.png)
+![image-20231223203701998](images/image-20231223203701998.png)
 
 ## 2.3：二进制部署Prometheus Server
 
@@ -345,7 +345,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/prometheus.service �
 
 ### 2.3.4：验证prometheus web界面
 
-![image-20231224145858914](images\image-20231224145858914.png)
+![image-20231224145858914](images/image-20231224145858914.png)
 
 ## 2.4：二进制安装node-exporter
 
@@ -357,7 +357,7 @@ node1: 192.168.58.146
 node2: 192.168.58.144
 ```
 
-![image-20231224150615294](images\image-20231224150615294.png)
+![image-20231224150615294](images/image-20231224150615294.png)
 
 ### 2.4.1：解压二进制程序
 
@@ -397,7 +397,7 @@ WantedBy=multi-user.target
 
 ### 2.4.4：验证node exporter web界面
 
-![image-20231224151656185](images\image-20231224151656185.png)
+![image-20231224151656185](images/image-20231224151656185.png)
 
 ### 2.4.5：node-exporter指标数据
 
@@ -469,11 +469,11 @@ root@pro:~# systemctl restart prometheus
 
 ### 2.5.4：验证prometheus server数据采集状态
 
-![image-20231224153631358](images\image-20231224153631358.png)
+![image-20231224153631358](images/image-20231224153631358.png)
 
 ### 2.5.5：验证Node数据
 
-![image-20231224153724305](images\image-20231224153724305.png)
+![image-20231224153724305](images/image-20231224153724305.png)
 
 ## 2.6：grafana部署
 
@@ -484,7 +484,7 @@ https://grafana.com/ # 官网
 https://grafana.com/grafana/dashboards/ #模板下载
 ```
 
-![image-20231224154151300](images\image-20231224154151300.png)
+![image-20231224154151300](images/image-20231224154151300.png)
 
 ### 2.6.1：安装grafana server
 
@@ -528,41 +528,41 @@ http_port = 3000
 
 `admin/admin`
 
-![image-20231224155700901](images\image-20231224155700901.png)
+![image-20231224155700901](images/image-20231224155700901.png)
 
 #### 2.6.4.2：添加prometheus数据源
 
-![image-20231224155901347](images\image-20231224155901347.png)
+![image-20231224155901347](images/image-20231224155901347.png)
 
-![image-20231224155949471](images\image-20231224155949471.png)
+![image-20231224155949471](images/image-20231224155949471.png)
 
-![image-20231224160118352](images\image-20231224160118352.png)
+![image-20231224160118352](images/image-20231224160118352.png)
 
-![image-20231224160139248](images\image-20231224160139248.png)
+![image-20231224160139248](images/image-20231224160139248.png)
 
 ## 2.7：grafana导入模板
 
 ### 2.7.1：查找目标模板
 
-![image-20231224160505594](images\image-20231224160505594.png)
+![image-20231224160505594](images/image-20231224160505594.png)
 
 ### 2.7.2：grafana导入模板步骤
 
 #### 2.7.2.1：点击import
 
-![image-20231224160630053](images\image-20231224160630053.png)
+![image-20231224160630053](images/image-20231224160630053.png)
 
 #### 2.7.2.2：输入模板ID
 
-![image-20231224160751759](images\image-20231224160751759.png)
+![image-20231224160751759](images/image-20231224160751759.png)
 
 #### 2.7.2.3：选择目的数据源
 
-![image-20231224160850386](images\image-20231224160850386.png)
+![image-20231224160850386](images/image-20231224160850386.png)
 
 #### 2.7.2.4：验证模板图形
 
-![image-20231224160937563](images\image-20231224160937563.png)
+![image-20231224160937563](images/image-20231224160937563.png)
 
 #### 2.7.2.5：插件管理
 
@@ -585,11 +585,11 @@ https://grafana.com/grafana/plugins/grafana-piechart-panel/
 
 未安装饼图插件：（9894）
 
-![](images\image-20231224162056388.png)
+![](images/image-20231224162056388.png)
 
 已安装饼图插件：
 
-![image-20231224162343175](images\image-20231224162343175.png)
+![image-20231224162343175](images/image-20231224162343175.png)
 
 ## 2.8：通过yaml文件在kubernetes部署prometheus
 
@@ -1045,7 +1045,7 @@ prometheus-server-54f586ff7d-6ctbz   1/1     Running   0          2m9s
 prometheus      NodePort   10.102.238.253   <none>        9090:30090/TCP   5m14s
 ```
 
-![image-20231224203357034](images\image-20231224203357034.png)
+![image-20231224203357034](images/image-20231224203357034.png)
 
 # 三：prometheus的服务发现机制
 
@@ -1089,7 +1089,7 @@ relabel_configs: 在采集之前（采集数据之前重新定义元标签），
 metric_relabel_configs：如果已经抓取到指标数据，可以使用metric_relabel_configs做最后的重新标记和过滤。
 ```
 
-![image-20231225121344485](images\image-20231225121344485.png)
+![image-20231225121344485](images/image-20231225121344485.png)
 
 ```yaml
 scrape_configs:
@@ -1165,7 +1165,7 @@ labelkeep：匹配regex所有标签名称，匹配的标签都将从标签集中
 
 好多down的，是因为做服务发现的时候没有进行过滤，所有的Pod被匹配成功并进行监控，但是Pod并没有提供metrics指标数据，所以不通：
 
-![image-20231225144542620](images\image-20231225144542620.png)
+![image-20231225144542620](images/image-20231225144542620.png)
 
 ### 3.1.5：查看prometheus server容器证书
 
@@ -1217,7 +1217,7 @@ kubernetes   192.168.58.133:6443   44h
 最终，匹配到api-server的地址
 ```
 
-![image-20231225150825456](images\image-20231225150825456.png)
+![image-20231225150825456](images/image-20231225150825456.png)
 
 ### 3.1.8：api-server指标数据
 
@@ -1227,7 +1227,7 @@ Apiserver组件是k8s集群的入口，所有请求都是从apiserver进来的�
 
 以下promQL语句为查询apiserver最近一分钟请求数量统计：
 
-![image-20231225151428264](images\image-20231225151428264.png)
+![image-20231225151428264](images/image-20231225151428264.png)
 
 `irate和rate都会用于计算某个指标在一定时间内的变化率。但是它们的计算方法有所不同：irate取的是指定时间范围内最近两个数据点计算速率，而rate会取指定时间范围内所有数据点，算出一组速率，然后取平均值作为结果`
 
@@ -1320,7 +1320,7 @@ Events:            <none>
  kubectl scale deploy coredns --replicas=3 -n kube-system
 ```
 
-![image-20231225155752214](images\image-20231225155752214.png)
+![image-20231225155752214](images/image-20231225155752214.png)
 
 ### 3.1.10：node节点发现
 
@@ -1357,7 +1357,7 @@ data:
         regex: __meta_kubernetes_node_label_(.+)
 ```
 
-![image-20231225160826411](images\image-20231225160826411.png)
+![image-20231225160826411](images/image-20231225160826411.png)
 
 #### 3.1.10.2：node节点指标数据
 
@@ -1669,7 +1669,7 @@ scrape_configs:
 
 #### 3.1.12.4：验证数据
 
-![image-20231225185036253](images\image-20231225185036253.png)
+![image-20231225185036253](images/image-20231225185036253.png)
 
 ## 3.2：static_configs
 
@@ -1701,7 +1701,7 @@ scrape_configs:
 
 ### 3.2.2：验证prometheus web
 
-![image-20231227093009434](images\image-20231227093009434.png)
+![image-20231227093009434](images/image-20231227093009434.png)
 
 ## 3.3：consul_sd_configs
 
@@ -1752,11 +1752,11 @@ consul3:
 
 日志：
 
-![image-20231227101539319](images\image-20231227101539319.png)
+![image-20231227101539319](images/image-20231227101539319.png)
 
 web截图：
 
-![image-20231227101724011](images\image-20231227101724011.png)
+![image-20231227101724011](images/image-20231227101724011.png)
 
 ### 3.3.3：测试写入数据
 
@@ -1771,7 +1771,7 @@ web截图：
 
 ### 3.3.4: consul验证数据
 
-![image-20231227103235795](images\image-20231227103235795.png)
+![image-20231227103235795](images/image-20231227103235795.png)
 
 ### 3.3.5：配置prometheus到consul发现服务
 
@@ -1804,7 +1804,7 @@ services：[]  #表示匹配到consul中所有的service
       action: drop  #不匹配consul本身服务
 ```
 
-![image-20231227104919495](images\image-20231227104919495.png)
+![image-20231227104919495](images/image-20231227104919495.png)
 
 ### 3.3.6：consul服务删除
 
@@ -1820,11 +1820,11 @@ services：[]  #表示匹配到consul中所有的service
 ~# curl -X PUT -d '{"id": "node-exporter145","name": "node-exporter145","address": "192.168.58.145","port":9100,"tags":["node-exporter"],"checks": [{"http":"http://192.168.58.145:9100/","interval":"5s"}]}' http://192.168.58.145:8500/v1/agent/service/register
 ```
 
-![image-20231227105546713](images\image-20231227105546713.png)
+![image-20231227105546713](images/image-20231227105546713.png)
 
 #### 3.3.7.2：验证prom能否自动发现
 
-![image-20231227105647893](images\image-20231227105647893.png)
+![image-20231227105647893](images/image-20231227105647893.png)
 
 ## 3.4：file_sd_configs
 
@@ -1855,7 +1855,7 @@ services：[]  #表示匹配到consul中所有的service
 
 ### 3.4.3：验证数据
 
-![image-20231227111819657](images\image-20231227111819657.png)
+![image-20231227111819657](images/image-20231227111819657.png)
 
 ## 3.5：DNS服务发现
 
@@ -1895,7 +1895,7 @@ __meta_dns_srv_record_port: 记录的端口字段
 
 ### 3.5.2：验证服务状态
 
-![image-20231227113738868](images\image-20231227113738868.png)
+![image-20231227113738868](images/image-20231227113738868.png)
 
 # 四：PromQL语句简介
 
@@ -1923,7 +1923,7 @@ Prometheus提供一个函数式的表达式语言PromQL，可以使用户实时�
 
 ### 4.1.2：数据类型
 
-![image-20231227144131831](images\image-20231227144131831.png)
+![image-20231227144131831](images/image-20231227144131831.png)
 
 #### 4.1.2.1：Counter 只增不减计数器
 
@@ -1947,7 +1947,7 @@ topk(10, http_requests_total)
 
 Gauge：仪表盘，代表一个可以任意变化的指标数据，值可以随时增高或减少，如带宽速率，内存使用率,nginx活动连接数。
 
-![image-20231227145053474](images\image-20231227145053474.png)
+![image-20231227145053474](images/image-20231227145053474.png)
 
 #### 4.1.2.3：Histogram 累积直方图
 
@@ -1974,7 +1974,7 @@ prometheus_http_request_duration_seconds_bucket{handler="/api/v1/label/:name/val
 prometheus_http_request_duration_seconds_bucket{handler="/api/v1/label/:name/values",le="1"} 3
 ```
 
-![image-20231227150730718](images\image-20231227150730718.png)
+![image-20231227150730718](images/image-20231227150730718.png)
 
 #### 4.1.2.4：Summary
 
@@ -1992,7 +1992,7 @@ go_gc_duration_seconds_sum 0.018500285
 go_gc_duration_seconds_count 94
 ```
 
-![image-20231227151618182](images\image-20231227151618182.png)
+![image-20231227151618182](images/image-20231227151618182.png)
 
 ## 4.2：PromQL-指标数据
 
@@ -2050,7 +2050,7 @@ node_memory_MemTotal_bytes{}
 node_memory_MemTotal_bytes{}[5m]
 ```
 
-![image-20231227154714263](images\image-20231227154714263.png)
+![image-20231227154714263](images/image-20231227154714263.png)
 
 ## 4.5：PromQL-运算符
 
@@ -2066,7 +2066,7 @@ node_memory_MemFree_bytes/1024/1024  # 将内存单位从字节转为兆
 node_disk_written_bytes_total{device="sda"} + node_disk_read_bytes_total{device="sda"} # 计算磁盘读写数据量
 ```
 
-![image-20231227155515218](images\image-20231227155515218.png)
+![image-20231227155515218](images/image-20231227155515218.png)
 
 ## 4.6：PromQL-聚合运算
 
@@ -2084,7 +2084,7 @@ max(node_network_receive_bytes_total) by (instance)
 max(rate(node_network_receive_bytes_total[5m])) by (device)
 ```
 
-![image-20231227161310580](images\image-20231227161310580.png)
+![image-20231227161310580](images/image-20231227161310580.png)
 
 ### 4.6.2：sum、count
 
@@ -2098,7 +2098,7 @@ count(node_os_version)
 {}   8  #一共两条返回的数据
 ```
 
-![image-20231227162124327](images\image-20231227162124327.png)
+![image-20231227162124327](images/image-20231227162124327.png)
 
 ### 4.6.3：abs、absent
 
@@ -2110,7 +2110,7 @@ absent() # 返回布尔值。如果监控项指标有数据返回空，没数据
 absent(sum(prometheus_http_requests_total{handler="/metrics"}))
 ```
 
-![image-20231227163628345](images\image-20231227163628345.png)
+![image-20231227163628345](images/image-20231227163628345.png)
 
 ### 4.6.4：stddev、stdvar
 
@@ -2134,7 +2134,7 @@ bottomk()   #样本值排名最小的N个数据
   bottomk(6,prometheus_http_requests_total)
 ```
 
-![image-20231227165141204](images\image-20231227165141204.png)
+![image-20231227165141204](images/image-20231227165141204.png)
 
 ### 4.6.6：rate、irate
 
@@ -2146,9 +2146,9 @@ irate()：专门处理counter数据类型，区间向量中最后两个样本数
 	irate(prometheus_http_requests_total[5m])
 ```
 
-![image-20231227170100265](images\image-20231227170100265.png)
+![image-20231227170100265](images/image-20231227170100265.png)
 
-![image-20231227170129774](images\image-20231227170129774.png)
+![image-20231227170129774](images/image-20231227170129774.png)
 
 ### 4.6.7：by、without
 
@@ -2160,7 +2160,7 @@ sum(rate(node_memory_MemFree_bytes[5m])) by (instance)
 sum(rate(node_memory_MemFree_bytes[5m])) without (instance)
 ```
 
-![image-20231227170910332](images\image-20231227170910332.png)
+![image-20231227170910332](images/image-20231227170910332.png)
 
 ### 4.6.8：histogram_quantile()
 
@@ -2295,7 +2295,7 @@ kube-state-metrics-7478784f5b-6m7dz        1/1     Running   0            2m1s
 
 ## 5.2：验证数据
 
-![image-20240103094241377](images\image-20240103094241377.png)
+![image-20240103094241377](images/image-20240103094241377.png)
 
 ## 5.3：prometheus采集数据
 
@@ -2308,13 +2308,13 @@ kube-state-metrics-7478784f5b-6m7dz        1/1     Running   0            2m1s
 
 ## 5.4：验证prometheus状态
 
-![image-20240103094750260](images\image-20240103094750260.png)
+![image-20240103094750260](images/image-20240103094750260.png)
 
 ## 5.5：导入grafana
 
 13824:
 
-![image-20240103095643370](images\image-20240103095643370.png)
+![image-20240103095643370](images/image-20240103095643370.png)
 
 # 六：监控基础服务
 
@@ -2410,7 +2410,7 @@ WantedBy=multi-user.target
 
 ### 6.1.5：验证metrics
 
-![image-20240103104519933](images\image-20240103104519933.png)
+![image-20240103104519933](images/image-20240103104519933.png)
 
 ### 6.1.6：prometheus采集数据
 
@@ -2425,13 +2425,13 @@ WantedBy=multi-user.target
 
 ### 6.1.7：验证指标数据
 
-![image-20240103105010660](images\image-20240103105010660.png)
+![image-20240103105010660](images/image-20240103105010660.png)
 
 ### 6.1.8：导入模板
 
 11323
 
-![image-20240103105207258](images\image-20240103105207258.png)
+![image-20240103105207258](images/image-20240103105207258.png)
 
 ## 6.2：监控haproxy
 
@@ -2492,7 +2492,7 @@ ts=2024-01-03T03:44:50.103Z caller=tls_config.go:235 level=info msg="TLS is disa
 
 ```
 
-![image-20240103114347405](images\image-20240103114347405.png)
+![image-20240103114347405](images/image-20240103114347405.png)
 
 ### 6.2.3：验证metrics数据
 
@@ -2507,7 +2507,7 @@ backend prom-web
 ~$ systemctl restart haproxy
 ```
 
-![image-20240103120308930](images\image-20240103120308930.png)
+![image-20240103120308930](images/image-20240103120308930.png)
 
 ### 6.2.4: prometheus添加job
 
@@ -2519,13 +2519,13 @@ backend prom-web
 ~$ systemctl restart prometheus          
 ```
 
-![image-20240103120641337](images\image-20240103120641337.png)
+![image-20240103120641337](images/image-20240103120641337.png)
 
 ### 6.2.5: 导入grafana
 
 367
 
-![image-20240103120846646](images\image-20240103120846646.png)
+![image-20240103120846646](images/image-20240103120846646.png)
 
 ## 6.3：监控nginx
 
@@ -2585,7 +2585,7 @@ nginx: configuration file /app/nginx/conf/nginx.conf test is successful
 ~$ /app/nginx/sbin/nginx
 ```
 
-![image-20240103143617728](images\image-20240103143617728.png)
+![image-20240103143617728](images/image-20240103143617728.png)
 
 ### 6.3.4: 安装nginx exporter
 
@@ -2603,7 +2603,7 @@ nginx: configuration file /app/nginx/conf/nginx.conf test is successful
 
 ### 6.3.5: 验证nginx exporter数据
 
-![image-20240103145257144](images\image-20240103145257144.png)
+![image-20240103145257144](images/image-20240103145257144.png)
 
 ### 6.3.6: 配置prometheus
 
@@ -2614,13 +2614,13 @@ nginx: configuration file /app/nginx/conf/nginx.conf test is successful
       - targets: ["192.168.58.146:9913"]
 ```
 
-![image-20240103145533243](images\image-20240103145533243.png)
+![image-20240103145533243](images/image-20240103145533243.png)
 
 ### 6.3.7：grafana配置
 
 2949
 
-![image-20240103145807390](images\image-20240103145807390.png)
+![image-20240103145807390](images/image-20240103145807390.png)
 
 ## 6.4： black_exporter监控URL
 
@@ -2666,7 +2666,7 @@ WantedBy=multi-user.target
 
 ### 6.4.3：验证web界面
 
-![image-20240103152250886](images\image-20240103152250886.png)
+![image-20240103152250886](images/image-20240103152250886.png)
 
 ### 6.4.4：blackbox exporter实现URL监控
 
@@ -2704,11 +2704,11 @@ prometheus调用blackbox exporter实现对URL/ICMP的监控。
 
 #### 6.4.4.2：验证prometheus
 
-![image-20240103160218483](images\image-20240103160218483.png)
+![image-20240103160218483](images/image-20240103160218483.png)
 
 #### 6.4.4.3: blackbox exporter界面验证数据
 
-![image-20240103160306956](images\image-20240103160306956.png)
+![image-20240103160306956](images/image-20240103160306956.png)
 
 ### 6.4.5：blackbox exporter实现ICMP监控
 
@@ -2737,7 +2737,7 @@ prometheus调用blackbox exporter实现对URL/ICMP的监控。
 
 #### 6.4.5.2：blackbox exporter界面验证数据
 
-![image-20240103160959757](images\image-20240103160959757.png)
+![image-20240103160959757](images/image-20240103160959757.png)
 
 ### 6.4.6：blackbox exporter实现端口监控
 
@@ -2765,13 +2765,13 @@ prometheus调用blackbox exporter实现对URL/ICMP的监控。
 
 #### 6.4.6.2：blackbox exporter界面验证数据
 
-![image-20240103161912752](images\image-20240103161912752.png)
+![image-20240103161912752](images/image-20240103161912752.png)
 
 ### 6.4.7：导入grafana模板
 
 9965
 
-![image-20240103162145617](images\image-20240103162145617.png)
+![image-20240103162145617](images/image-20240103162145617.png)
 
 # 七：Alertmanager
 
@@ -2781,7 +2781,7 @@ prometheus触发一条告警的过程：
 prometheus--->触发阈值---->超出持续时间---->alertmanager---->分组|抑制|静默--->媒体类型--->邮件|钉钉|微信等。
 ```
 
-![image-20240103164450668](images\image-20240103164450668.png)
+![image-20240103164450668](images/image-20240103164450668.png)
 
 ```bash
 分组(group)：将类似性质的告警合并为单个通知，比如网络通知，主机通知，服务通知。
@@ -2901,7 +2901,7 @@ inhibit_rules:
 # systemctl restart alertmanager
 ```
 
-![image-20240103193402541](images\image-20240103193402541.png)
+![image-20240103193402541](images/image-20240103193402541.png)
 
 ### 7.1.3：配置prometheus报警规则
 
@@ -3031,17 +3031,17 @@ prometheus状态：
   firing：已触发告警并发送给alertmanager
 ```
 
-![image-20240103195027175](images\image-20240103195027175.png)
+![image-20240103195027175](images/image-20240103195027175.png)
 
 ### 7.1.9: 邮箱验证
 
-![image-20240103195148074](images\image-20240103195148074.png)
+![image-20240103195148074](images/image-20240103195148074.png)
 
 ## 7.2：钉钉通知
 
 ### 7.2.1：钉钉群组创建机器人-关键字认证
 
-![image-20240103201605431](images\image-20240103201605431.png)
+![image-20240103201605431](images/image-20240103201605431.png)
 
 ### 7.2.2：测试发送消息
 
@@ -3052,7 +3052,7 @@ prometheus状态：
 {"errcode":0,"errmsg":"ok"}
 ```
 
-![image-20240103202320448](images\image-20240103202320448.png)
+![image-20240103202320448](images/image-20240103202320448.png)
 
 ### 7.2.3: 部署webhook-dingtalk
 
@@ -3110,11 +3110,11 @@ inhibit_rules:
 
 ### 7.2.5: dingtalk验证日志
 
-![image-20240103204730043](images\image-20240103204730043.png)
+![image-20240103204730043](images/image-20240103204730043.png)
 
 ### 7.2.6：钉钉验证消息
 
-![image-20240103204807209](images\image-20240103204807209.png)
+![image-20240103204807209](images/image-20240103204807209.png)
 
 ## 7.3：企业微信通知
 
@@ -3124,47 +3124,47 @@ https://work.weixin.qq.com/
 
 ### 7.3.1：注册企业微信账号
 
-![image-20240104090926328](images\image-20240104090926328.png)
+![image-20240104090926328](images/image-20240104090926328.png)
 
 ### 7.3.2：创建应用
 
-![image-20240104091133402](images\image-20240104091133402.png)
+![image-20240104091133402](images/image-20240104091133402.png)
 
 ### 7.3.3：填写应用信息
 
-![image-20240104091308052](images\image-20240104091308052.png)
+![image-20240104091308052](images/image-20240104091308052.png)
 
 ### 7.3.4：注册完成
 
 AgentID和Secret会在发送微信报警信息的时候调用。
 
-![image-20240104092437390](images\image-20240104092437390.png)
+![image-20240104092437390](images/image-20240104092437390.png)
 
 ### 7.3.5：创建微信账号
 
 用户账号名称必须唯一，在发送微信报警信息的时候调用。
 
-![image-20240104092908970](images\image-20240104092908970.png)
+![image-20240104092908970](images/image-20240104092908970.png)
 
 ### 7.3.6：验证通讯录
 
-![image-20240104093344250](images\image-20240104093344250.png)
+![image-20240104093344250](images/image-20240104093344250.png)
 
 ### 7.3.7：查看企业信息
 
 企业ID在发送微信报警信息的时候会被调用。
 
-![image-20240104093501325](images\image-20240104093501325.png)
+![image-20240104093501325](images/image-20240104093501325.png)
 
 ### 7.3.8：测试发送信息
 
 #### 7.3.8.1：测试发送
 
-![image-20240104093750442](images\image-20240104093750442.png)
+![image-20240104093750442](images/image-20240104093750442.png)
 
 #### 7.3.8.2：企业微信验证信息
 
-![image-20240104093854434](images\image-20240104093854434.png)
+![image-20240104093854434](images/image-20240104093854434.png)
 
 ### 7.3.9：认证信息收集
 
@@ -3255,7 +3255,7 @@ ts=2024-01-04T02:39:04.861Z caller=dispatch.go:352 level=error component=dispatc
 
 #### 7.3.13.1：获取部门ID
 
-![image-20240104105335892](images\image-20240104105335892.png)
+![image-20240104105335892](images/image-20240104105335892.png)
 
 #### 7.3.13.2：alertmanager配置
 
@@ -3357,7 +3357,7 @@ inhibit_rules:
 
 ### 7.4.2：验证消息发送
 
-![image-20240104111821082](images\image-20240104111821082.png)
+![image-20240104111821082](images/image-20240104111821082.png)
 
 ## 7.5：自定义消息模板
 
@@ -3597,11 +3597,11 @@ inhibit_rules:
 
 #### 7.5.3.1：邮件自定义模板验证
 
-![image-20240104154153356](images\image-20240104154153356.png)
+![image-20240104154153356](images/image-20240104154153356.png)
 
 #### 7.5.3.2： 钉钉自定义模板验证
 
-![image-20240104154352884](images\image-20240104154352884.png)
+![image-20240104154352884](images/image-20240104154352884.png)
 
 ## 7.6：告警抑制与静默
 
@@ -3636,15 +3636,15 @@ groups:
 
 先找到要静默的告警事件，然后手动静默指定的事件：
 
-![image-20240104161453025](images\image-20240104161453025.png)
+![image-20240104161453025](images/image-20240104161453025.png)
 
 点击slience，填写信息并创建：
 
-![image-20240104161541490](images\image-20240104161541490.png)
+![image-20240104161541490](images/image-20240104161541490.png)
 
 验证告警是否被静默：
 
-![image-20240104161639449](images\image-20240104161639449.png)
+![image-20240104161639449](images/image-20240104161639449.png)
 
 ## 7.7：alertmanager高可用
 
@@ -3660,7 +3660,7 @@ Alertmanager 引入了Gossip机制。Gossip机制为多个Alertmanager之间提�
 --cluster.peer value: 初始化时关联的其它实例的集群服务地址
 ```
 
-![image-20240104163301836](images\image-20240104163301836.png)
+![image-20240104163301836](images/image-20240104163301836.png)
 
 ### 7.7.1：高可用集群搭建
 
@@ -3785,7 +3785,7 @@ Prometheus 联邦节点1：
 
 验证数据：
 
-![image-20240105112232172](images\image-20240105112232172.png)
+![image-20240105112232172](images/image-20240105112232172.png)
 
 ```bash
 prometheus 联邦节点2：
@@ -3799,7 +3799,7 @@ prometheus 联邦节点2：
 
 验证数据：
 
-![image-20240105112523909](images\image-20240105112523909.png)
+![image-20240105112523909](images/image-20240105112523909.png)
 
 ## 8.4：prometheus server采集联邦server
 
@@ -3827,11 +3827,11 @@ prometheus 联邦节点2：
 
 ### 8.5.1: 验证数据收集状态
 
-![image-20240105113219204](images\image-20240105113219204.png)
+![image-20240105113219204](images/image-20240105113219204.png)
 
 ### 8.5.2：验证指标数据
 
-![image-20240105113304465](images\image-20240105113304465.png)
+![image-20240105113304465](images/image-20240105113304465.png)
 
 # 九：prometheus存储系统
 
@@ -3839,13 +3839,13 @@ Prometheus有着非常高效的时间序列数据存储方法，每个采样数�
 
 ## 9.1：prometheus本地存储简介
 
-![image-20240105113901173](images\image-20240105113901173.png)
+![image-20240105113901173](images/image-20240105113901173.png)
 
 ```bash
 默认情况下，prometheus将采集到的数据存储到本地的TSDB数据库，路径默认为prometheus安装目录的data目录，数据写入过程为先把数据写入wal日志并放在内存里面，然后2小时后将内存数据保存至一个block块，同时再把新采集的数据写入内存并在2小时后在保存一个新的block块，以此类推。
 ```
 
-![image-20240105114912641](images\image-20240105114912641.png)
+![image-20240105114912641](images/image-20240105114912641.png)
 
 ### 9.1.1：block简介
 
@@ -3863,7 +3863,7 @@ drwxr-xr-x 3 root root  4096 Jan  4 11:00 01HKA22VKT96JR5C3S3VK1MZQA  #block
 drwxr-xr-x 3 root root  4096 Jan  5 01:44 01HKBMPY9GXFCXM9NCGJQX1NM6  #block
 ```
 
-![image-20240105115300708](images\image-20240105115300708.png)
+![image-20240105115300708](images/image-20240105115300708.png)
 
 ### 9.1.2：block特性
 
@@ -3908,7 +3908,7 @@ https://github.com/VictoriaMetrics/VictoriaMetrics/tree/v1.96.0
 
 https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html
 
-![image-20240105143400366](images\image-20240105143400366.png)
+![image-20240105143400366](images/image-20240105143400366.png)
 
 ### 9.2.1: 单机版部署
 
@@ -3950,7 +3950,7 @@ WantedBy=multi-user.target
 
 验证web页面：
 
-![image-20240105150314464](images\image-20240105150314464.png)
+![image-20240105150314464](images/image-20240105150314464.png)
 
 #### 9.2.1.2：prometheus设置
 
@@ -3964,21 +3964,21 @@ remote_write:
 
 http://192.168.58.147:8428/vmui/
 
-![image-20240105151306517](images\image-20240105151306517.png)
+![image-20240105151306517](images/image-20240105151306517.png)
 
 #### 9.2.1.4：grafana设置
 
 添加数据源：类型为prometheus，地址及端口为VictoriaMetrics：
 
-![image-20240105151644478](images\image-20240105151644478.png)
+![image-20240105151644478](images/image-20240105151644478.png)
 
 导入指定模板：8919
 
-![image-20240105151805807](images\image-20240105151805807.png)
+![image-20240105151805807](images/image-20240105151805807.png)
 
 #### 9.2.1.5 ：验证数据
 
-![image-20240105152254494](images\image-20240105152254494.png)
+![image-20240105152254494](images/image-20240105152254494.png)
 
 ### 9.2.2： k8s集群版部署victorametrics
 
@@ -3988,7 +3988,7 @@ https://www.qikqiak.com/post/victoriametrics-usage/
 
 ### 9.2.3：二进制集群版部署（分片）
 
-![image-20240106153014022](images\image-20240106153014022.png)
+![image-20240106153014022](images/image-20240106153014022.png)
 
 #### 9.2.3.1：组件介绍
 
@@ -3999,7 +3999,7 @@ vmstorage #存储原始数据，默认端口8482
 vmselect  # 查询组件（读），连接vmstroage，默认端口8481
 ```
 
-![image-20240106144925144](images\image-20240106144925144.png)
+![image-20240106144925144](images/ image-20240106144925144.png)
 
 #### 9.2.3.2：环境准备
 
@@ -4136,11 +4136,11 @@ remote_write:
 
 http://192.168.58.150:8481/select/0/prometheus
 
-![image-20240106162907038](images\image-20240106162907038.png)
+![image-20240106162907038](images/image-20240106162907038.png)
 
 导入指定模板：13824
 
-![image-20240106181944509](images\image-20240106181944509.png)
+![image-20240106181944509](images/image-20240106181944509.png)
 
 ### 9.2.4：二进制集群部署（副本）
 
