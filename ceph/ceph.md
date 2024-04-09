@@ -34,7 +34,7 @@ SAN:SAN（Storage Area Network，存储区域网络)
 分布式存储：Ceph,TFS,FastDFS,MogileFS,MooseFS,GlusterFS
 ```
 
-![image-20240119151855780](images\image-20240119151855780.png)
+![image-20240119151855780](images/image-20240119151855780.png)
 
 ### 1.1.5：有状态集群数据读写特性
 
@@ -48,7 +48,7 @@ SAN:SAN（Storage Area Network，存储区域网络)
 元数据：即是文件的属性信息（文件名、权限(属主、属组)、大小、时间戳等），在分布式存储中当客户端或者应用程序产生的客户端数据被写入到分布式存储系统的时候，会有一个服务（Name Node）提供文件元数据的路由功能，即告诉应用程序取哪个服务器去请求文件内容，然后再有(Data NODE)提供数据的读写请求及数据的高可用功能。
 ```
 
-![image-20240119104539367](images\image-20240119104539367.png)
+![image-20240119104539367](images/image-20240119104539367.png)
 
 ```bash
 块存储：需要格式化，将文件直接保存到磁盘上。
@@ -68,7 +68,7 @@ ceph是一个对象（object）式存储系统，它把每一个待存储的数�
 
 librados是RADOS存储集群的API，支持C/C++/JAVA/python/ruby/php/go等编程语言客户端。
 
-![image-20240119110033706](images\image-20240119110033706.png)
+![image-20240119110033706](images/image-20240119110033706.png)
 
 ## 2.1：Ceph的发展史
 
@@ -82,7 +82,7 @@ Lustre 是一种平行分布式文件系统,早在 1999 年，由皮特·布拉�
 
 https://access.redhat.com/documentation/zh-cn/red_hat_ceph_storage/4/html/configuration_guide/the-basics-of-ceph-configuration #红帽官方文档
 
-![image-20240119110316833](images\image-20240119110316833.png)
+![image-20240119110316833](images/image-20240119110316833.png)
 
 ## 2.2：ceph的设计思想
 
@@ -112,15 +112,15 @@ x将从9算起，它代表 Infernalis(首字母 I 是英文单词中的第九个
 稳定版依次：9.2.0 -> 9.2.1 -> 9.2.2
 ```
 
-![image-20240119112338497](images\image-20240119112338497.png)
+![image-20240119112338497](images/image-20240119112338497.png)
 
 到 2017 年底，Ceph 项目都采取每年发布两个稳定版本的做法,从 Jewel 版到 Nautilus 之前，Ceph 经历过一段时间的每间隔 9 个月发布一个新版本,Nautilus 版本开始改为每年春季 3 月份发布一个稳定版本,并提供长达 26 个月左右的后期版本更新.
 
-![image-20240119112610559](images\image-20240119112610559.png)
+![image-20240119112610559](images/image-20240119112610559.png)
 
 ## 2.4：ceph集群角色定义
 
-![image-20240119151743939](images\image-20240119151743939.png)
+![image-20240119151743939](images/image-20240119151743939.png)
 
 一个集群的组成部分：
 
@@ -176,7 +176,7 @@ ceph集群部署好之后，要先创建pool才能向ceph写入数据，文件�
 数据对象在写到主OSD之后在同步给从osd，以实现数据的高可用。
 ```
 
-![image-20240119151814851](images\image-20240119151814851.png)
+![image-20240119151814851](images/image-20240119151814851.png)
 
 **注：存储文件过程**
 
@@ -241,7 +241,7 @@ FileStore 将数据保存到与 Posix 兼容的文件系统(例如 Btrfs、XFS�
 地文件系统属性匹配存在限制等。
 ```
 
-![image-20240119144029367](images\image-20240119144029367.png)
+![image-20240119144029367](images/image-20240119144029367.png)
 
 #### 2.6.2.2: bluestore与rocksdb
 
@@ -260,7 +260,7 @@ FileStore 将数据保存到与 Posix 兼容的文件系统(例如 Btrfs、XFS�
 
 RocksDB 通过中间层 BlueRocksDB 访问文件系统的接口。这个文件系统与传统的 Linux文件系统（例如 Ext4 和 XFS）是不同的，它不是在 VFS 下面的通用文件系统，而是一个用户态的逻辑。BlueFS 通过函数接口（API，非 POSIX）的方式为 BlueRocksDB 提供类似文件系统的能力。
 
-![image-20240119144900409](images\image-20240119144900409.png)
+![image-20240119144900409](images/image-20240119144900409.png)
 
 BlueStore的逻辑架构如上图所示，模块划分的比较清晰，下面是各模块的作用：
 
@@ -305,7 +305,7 @@ CRUSH 是一种分布式算法，类似于一致性 hash 算法，用于为 RADO
 
 各ceph版本要求的操作系统版本：https://docs.ceph.com/en/latest/start/os-recommendations/
 
-![image-20240119151148943](images\image-20240119151148943.png)
+![image-20240119151148943](images/image-20240119151148943.png)
 
 ## 3.1：部署方式
 
@@ -356,7 +356,7 @@ cluster network: 用于集群管理及数据同步
 mgr,mon 都要和ceph osd节点的cluster网络通信
 ```
 
-![image-20240119161605052](images\image-20240119161605052.png)
+![image-20240119161605052](images/image-20240119161605052.png)
 
 ## 3.3：系统环境准备（所有节点操作）
 
@@ -572,7 +572,7 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy install --no-adjust-repos --no
 
 初始化完成：
 
-![image-20240122143040639](images\image-20240122143040639.png)
+![image-20240122143040639](images/image-20240122143040639.png)
 
 ### 3.4.6：安装mon节点
 
@@ -592,7 +592,7 @@ root@ceph-mon3:~# apt install ceph-mon
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy mon create-initial
 ```
 
-![image-20240123160349716](images\image-20240123160349716.png)
+![image-20240123160349716](images/image-20240123160349716.png)
 
 #### 3.4.7.2：验证mon节点：
 
@@ -620,7 +620,7 @@ cephadmin@ceph-deploy:~/ceph-cluster$ sudo apt install ceph-common #先安装 ce
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy admin ceph-node1 ceph-node2 ceph-node3
 ```
 
-![image-20240123161505764](images\image-20240123161505764.png)
+![image-20240123161505764](images/image-20240123161505764.png)
 
 ### 3.4.9: ceph-node验证秘钥
 
@@ -785,7 +785,7 @@ ceph-deploy disk zap ceph-node3 /dev/sdc
 ceph-deploy disk zap ceph-node3 /dev/sdd
 ```
 
-![image-20240123174114170](images\image-20240123174114170.png)
+![image-20240123174114170](images/image-20240123174114170.png)
 
 ### 3.4.15: 添加OSD
 
@@ -813,13 +813,13 @@ ceph-deploy osd create ceph-node3 --data /dev/sdc
 ceph-deploy osd create ceph-node3 --data /dev/sdd
 ```
 
-![image-20240123174850191](images\image-20240123174850191.png)
+![image-20240123174850191](images/image-20240123174850191.png)
 
 ### 3.4.16: 设置OSD服务自启动
 
 默认就已经自启动，node节点添加完成后，用于node服务器重启后，OSD是否会自动启动。
 
-![image-20240123180328894](images\image-20240123180328894.png)
+![image-20240123180328894](images/image-20240123180328894.png)
 
 ```bash
 root@ceph-node1:~# ps -ef | grep osd
@@ -846,11 +846,11 @@ root       44639   14745  0 10:06 pts/1    00:00:00 grep --color=auto osd
 root@ceph-node3:~# systemctl enable ceph-osd@6 ceph-osd@7 ceph-osd@8
 ```
 
-![image-20240123180731245](images\image-20240123180731245.png)
+![image-20240123180731245](images/image-20240123180731245.png)
 
 ### 3.4.17: 验证ceph集群
 
-![image-20240123180830901](images\image-20240123180830901.png)
+![image-20240123180830901](images/image-20240123180830901.png)
 
 ### 3.4.18：从RADOS移除OSD
 
@@ -997,11 +997,11 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph quorum_status
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph quorum_status --format json-pretty
 ```
 
-![image-20240123203209266](images\image-20240123203209266.png)
+![image-20240123203209266](images/image-20240123203209266.png)
 
 验证集群状态：
 
-![image-20240123203306425](images\image-20240123203306425.png)
+![image-20240123203306425](images/image-20240123203306425.png)
 
 ### 3.5.3：扩展mgr节点
 
@@ -1015,13 +1015,13 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy admin ceph-mgr2 #同步配置�
 
 ### 3.5.4： 验证mgr节点状态
 
-![image-20240123203618455](images\image-20240123203618455.png)
+![image-20240123203618455](images/image-20240123203618455.png)
 
 # 四：ceph集群应用基础
 
 ceph的集群应用
 
-![image-20240125151903060](images\image-20240125151903060.png)
+![image-20240125151903060](images/image-20240125151903060.png)
 
 ## 4.1：块设备RBD
 
@@ -1138,7 +1138,7 @@ rbd0                      252:0    0  100M  0 disk
 
 #### **4.1.3.5:客户端格式化磁盘并挂载使用：**
 
-![image-20240126120823818](images\image-20240126120823818.png)
+![image-20240126120823818](images/image-20240126120823818.png)
 
 #### 4.1.3.6: 客户端验证写数据
 
@@ -1154,7 +1154,7 @@ root@pro:/data# ll -h /data/ceph-test-file
 
 #### 4.1.3.7: ceph验证数据
 
-![image-20240126145035061](images\image-20240126145035061.png)
+![image-20240126145035061](images/image-20240126145035061.png)
 
 ## 4.2：ceph radosgw（RGW）对象存储
 
@@ -1172,7 +1172,7 @@ root@ceph-mgr1:~# apt install radosgw=16.2.14-1focal
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy --overwrite-conf rgw create ceph-mgr1
 ```
 
-![image-20240126145845890](images\image-20240126145845890.png)
+![image-20240126145845890](images/image-20240126145845890.png)
 
 ### 4.2.2:**验证** radosgw **服务：**
 
@@ -1182,11 +1182,11 @@ ceph       58817  0.7  4.2 6143596 59028 ?       Ssl  06:58   0:00 /usr/bin/rado
 root       59531  0.0  0.0   6432   656 pts/0    S+   06:59   0:00 grep --color=auto radosgw
 ```
 
-![image-20240126150030497](images\image-20240126150030497.png)
+![image-20240126150030497](images/image-20240126150030497.png)
 
 ### 4.2.3: 验证ceph状态
 
-![image-20240126150124906](images\image-20240126150124906.png)
+![image-20240126150124906](images/image-20240126150124906.png)
 
 ### 4.2.4:**验证** radosgw **存储池**:
 
@@ -1210,7 +1210,7 @@ Ceph FS 即 ceph filesystem，可以实现文件系统共享功能,客户端通�
 
 Ceph FS需要运行MDS服务，其守护进程为ceph-mds，ceph-mds进程管理与 cephFS 上存储的文件相关的元数据，并协调对 ceph 存储集群的访问。
 
-![image-20240126150839509](images\image-20240126150839509.png)
+![image-20240126150839509](images/image-20240126150839509.png)
 
 ### 4.3.1:**部署** MDS **服务**
 
@@ -1224,7 +1224,7 @@ root@ceph-mgr1:~# apt install  ceph-mds=16.2.14-1focal -y
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy mds create ceph-mgr1
 ```
 
-![image-20240126151316301](images\image-20240126151316301.png)
+![image-20240126151316301](images/image-20240126151316301.png)
 
 ### 4.3.2：验证MDS服务
 
@@ -1264,7 +1264,7 @@ name: mycephfs, metadata pool: cephfs-metadata, data pools: [cephfs-data ]
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph fs status mycephfs
 ```
 
-![image-20240126152714463](images\image-20240126152714463.png)
+![image-20240126152714463](images/image-20240126152714463.png)
 
 ### 4.3.5:**验证** cepfFS **服务状态：**
 
@@ -1291,13 +1291,13 @@ root@pro:/etc/ceph# mount -t ceph 192.168.58.161:6789:/ /mnt -o name=admin,secre
 #验证挂载点
 ```
 
-![image-20240126160455911](images\image-20240126160455911.png)
+![image-20240126160455911](images/image-20240126160455911.png)
 
 ```bash
 root@pro:/etc/ceph# cp /var/log/syslog /mnt/
 ```
 
-![image-20240126160616305](images\image-20240126160616305.png)
+![image-20240126160616305](images/image-20240126160616305.png)
 
 ```bash
 测试数据写入：
@@ -1309,7 +1309,7 @@ root@pro:/etc/ceph# dd if=/dev/zero of=/mnt/ceph-fs-test bs=4M count=25
 
 验证ceph存储池数据空间：
 
-![image-20240126160904359](images\image-20240126160904359.png)
+![image-20240126160904359](images/image-20240126160904359.png)
 
 ## 4.4：命令总结
 
@@ -1544,9 +1544,9 @@ $CEPH_CONF 环境变量
 4. 主 OSD 发送写入完成信号给客户端 APP。
 ```
 
-![image-20240126165709671](images\image-20240126165709671.png)
+![image-20240126165709671](images/image-20240126165709671.png)
 
-![image-20240126165733542](images\image-20240126165733542.png)
+![image-20240126165733542](images/image-20240126165733542.png)
 
 ### 4.7.2：**纠删码池** IO**：**
 
@@ -1569,19 +1569,19 @@ RGW 可以支持纠删码池，RBD 不支持
 2.对每个数据块进行编码并写入 OSD
 ```
 
-![image-20240126165914448](images\image-20240126165914448.png)
+![image-20240126165914448](images/image-20240126165914448.png)
 
 **纠删码读：**
 
 从相应的 OSDs 中获取数据后进行解码.
 
-![image-20240126170005080](images\image-20240126170005080.png)
+![image-20240126170005080](images/image-20240126170005080.png)
 
 
 
 如果此时有数据丢失，Ceph 会自动从存放校验码的 OSD 中读取数据进行解码。
 
-![image-20240126170058153](images\image-20240126170058153.png)
+![image-20240126170058153](images/image-20240126170058153.png)
 
 ### 4.7.3: PG与PGP
 
@@ -1609,7 +1609,7 @@ ceph基于crush算法将归置组PG分配至OSD
 
 当一个客户端存储对象的时候，CRUSH 算法映射每一个对象至归置组(PG)
 
-![image-20240126170746019](images\image-20240126170746019.png)
+![image-20240126170746019](images/image-20240126170746019.png)
 
 ### 4.7.5：PG分配计算
 
@@ -1660,7 +1660,7 @@ Total PGs =100*100/3=3333
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph pg ls-by-pool myrdb1 | awk '{print $1,$2,$15}'
 ```
 
-![image-20240126171725472](images\image-20240126171725472.png)
+![image-20240126171725472](images/image-20240126171725472.png)
 
 ## 4.8:PG的状态
 
@@ -1733,7 +1733,7 @@ https://www.jianshu.com/p/36c2d5682d87
 
 ## 4.9: **数据读写流程：**
 
-![image-20240126172904585](images\image-20240126172904585.png)
+![image-20240126172904585](images/image-20240126172904585.png)
 
 
 
@@ -1794,7 +1794,7 @@ $ ceph osd pool rename myrbd1 myrbd2
 $ rados df
 ```
 
-![image-20240126174142107](images\image-20240126174142107.png)
+![image-20240126174142107](images/image-20240126174142107.png)
 
 ### 4.10.2：**存储池的删除：**
 
@@ -2161,7 +2161,7 @@ cephx身份认证功能仅限制在ceph的各组件之间，不能扩展到其�
 ceph只负责认证授权，不能解决数据传输的加密问题。
 ```
 
-![image-20240325144004416](images\image-20240325144004416.png)
+![image-20240325144004416](images/image-20240325144004416.png)
 
 ## 5.2：访问流程
 
@@ -2171,9 +2171,9 @@ ceph用户需要拥有存储池的访问权限，才能读取和写入数据。
 
 ceph用户必须拥有执行权限才能使用ceph管理命令。
 
-![image-20240325144524560](D:\云原生\ceph\images\image-20240325144524560.png)
+![image-20240325144524560](images/image-20240325144524560.png)
 
-![image-20240325144558025](images\image-20240325144558025.png)
+![image-20240325144558025](images/image-20240325144558025.png)
 
 ## 5.3：ceph用户
 
@@ -2554,7 +2554,7 @@ Ceph 可以同时提供对象存储 RADOSGW、块存储 RBD、文件系统存储
 条带化技术就是一种自动的将I/O的负载均衡到多个物理磁盘的技术，条带化技术就将一块连续的数据分成很多小部分并把他们分别存储到不同磁盘上去。这就能使多个进程同时访问数据的多个不同部分而不会造成磁盘冲突。而且在需要对这种数据进行顺序访问的时候可以获得最大程度上的 I/O 并行能力，从而获得非常好的性能。
 ```
 
-![image-20240327145341216](images\image-20240327145341216.png)
+![image-20240327145341216](images/image-20240327145341216.png)
 
 ## 6.2： 创建存储池
 
@@ -3230,7 +3230,7 @@ Ceph FS需要运行mds服务，其守护进程为ceph-mds，ceph-mds进程管理
 cephfs 的元数据使用的动态子树分区,把元数据划分名称空间对应到不同的 mds,写入元数据的时候将元数据按照名称保存到不同主mds上,有点类似于nginx中的缓存目录分层一样.
 ```
 
-![image-20240327180445703](images\image-20240327180445703.png)
+![image-20240327180445703](images/image-20240327180445703.png)
 
 ## 7.1: 部署MDS服务
 
@@ -3265,7 +3265,7 @@ name: mycephfs, metadata pool: cephfs-metadata, data pools: [cephfs-data ]
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph fs status mycephfs
 ```
 
-![image-20240327182034039](images\image-20240327182034039.png)
+![image-20240327182034039](images/image-20240327182034039.png)
 
 ## 7.4: 验证cephFS服务状态
 
@@ -3351,7 +3351,7 @@ cephadmin@ceph-deploy:~$ scp wl.key root@192.168.58.145:/etc/ceph
 root@pro:~# mount -t ceph 192.168.58.161:6789:/ /data -o name=wl,secretfile=/etc/ceph/wl.key
 ```
 
-![image-20240327184058766](images\image-20240327184058766.png)
+![image-20240327184058766](images/image-20240327184058766.png)
 
 ```bash
 #验证写入数据
@@ -3373,7 +3373,7 @@ root@pro:~#  dd if=/dev/zero of=/data/testfile1 bs=1M count=100
 104857600 bytes (105 MB, 100 MiB) copied, 0.224282 s, 468 MB/s
 ```
 
-![image-20240327184538710](images\image-20240327184538710.png)
+![image-20240327184538710](images/image-20240327184538710.png)
 
 ### 7.9.3: 开机挂载
 
@@ -3390,7 +3390,7 @@ cat /etc/fstab
 
 客户端内核加载 ceph.ko 模块挂载 cephfs 文件系统。
 
-![image-20240327185244009](images\image-20240327185244009.png)
+![image-20240327185244009](images/image-20240327185244009.png)
 
 ## 7.10:用户空间挂载ceph-fs
 
@@ -3421,7 +3421,7 @@ ceph-fuse[26153]: starting fuse
 # 验证挂载
 ```
 
-![image-20240327190633584](images\image-20240327190633584.png)
+![image-20240327190633584](images/image-20240327190633584.png)
 
 测试读写效率f非常慢：
 
@@ -3436,7 +3436,7 @@ root@pro:~# dd if=/dev/zero of=/data1/testfile bs=1M count=10000
 
 Ceph mds(etadata service)作为 ceph 的访问入口，需要实现高性能及数据备份，假设启动4 个 MDS 进程，设置 2 个 Rank。这时候有 2 个 MDS 进程会分配给两个 Rank，还剩下 2个 MDS 进程分别作为另外个的备份。
 
-![image-20240327191212721](images\image-20240327191212721.png)
+![image-20240327191212721](images/image-20240327191212721.png)
 
 设置每个 Rank 的备份 MDS，也就是如果此 Rank 当前的 MDS 出现问题马上切换到另个MDS。设置备份的方法有很多，常用选项如下。
 
@@ -3486,7 +3486,7 @@ mycephfs:1 {0=ceph-mgr1=up:active} 3 up:standby
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph fs status
 ```
 
-![image-20240327201752540](images\image-20240327201752540.png)
+![image-20240327201752540](images/image-20240327201752540.png)
 
 ### 7.11.4: 设置处于激活状态mds的数量
 
@@ -3497,7 +3497,7 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph fs set mycephfs max_mds 2 #设置同�
 mds 最大值为 2。
 ```
 
-![image-20240327202105667](images\image-20240327202105667.png)
+![image-20240327202105667](images/image-20240327202105667.png)
 
 ### 7.11.5: MDS高可用优化
 
@@ -3555,7 +3555,7 @@ root@ceph-mon3:~# systemctl restart ceph-mds@ceph-mds@ceph-mon3.service
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph fs status
 ```
 
-![image-20240327203105413](images\image-20240327203105413.png)
+![image-20240327203105413](images/image-20240327203105413.png)
 
 查看 active 和 standby 对应关系
 
@@ -3563,7 +3563,7 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph fs status
 ceph fs get mycephfs
 ```
 
-![image-20240327203323714](images\image-20240327203323714.png)
+![image-20240327203323714](images/image-20240327203323714.png)
 
 ## **7.12:通过 ganesha 将 cephfs 导出为 NFS：**
 
@@ -3623,7 +3623,7 @@ root@pro:~# apt install nfs-common
 root@pro:/etc/ceph# mount -t nfs4 192.168.58.164:/alblue /data2
 ```
 
-![image-20240327205422035](images\image-20240327205422035.png)
+![image-20240327205422035](images/image-20240327205422035.png)
 
 ```bash
 #客户端测试写入数据：
@@ -3702,9 +3702,9 @@ https://docs.amazonaws.cn/AmazonS3/latest/userguide/bucketnamingrules.html
 >
 >Bucket 名称必须全局唯一。
 
-![image-20240328105549055](images\image-20240328105549055.png)
+![image-20240328105549055](images/image-20240328105549055.png)
 
-![image-20240328105613276](images\image-20240328105613276.png)
+![image-20240328105613276](images/image-20240328105613276.png)
 
 ## 8.3: 对象存储访问对比
 
@@ -3736,15 +3736,15 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy rgw create ceph-mgr1
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph-deploy rgw create ceph-mgr2
 ```
 
-![image-20240328142412857](images\image-20240328142412857.png)
+![image-20240328142412857](images/image-20240328142412857.png)
 
 ### 8.4.2: 验证radosgw服务状态
 
-![image-20240328143034208](images\image-20240328143034208.png)
+![image-20240328143034208](images/image-20240328143034208.png)
 
 ### 8.4.3:**验证** radosgw **服务进程**
 
-![image-20240328142840063](images\image-20240328142840063.png)
+![image-20240328142840063](images/image-20240328142840063.png)
 
 ### 8.4.4:radosgw **的存储池功能
 
@@ -3805,11 +3805,11 @@ default.rgw.buckets.non-ec: 数据的额外信息存储池。
 
 ### 8.4.5：访问 radosgw 服务
 
-![image-20240328144438702](images\image-20240328144438702.png)
+![image-20240328144438702](images/image-20240328144438702.png)
 
 ## 8.5：radosgw服务高可用配置
 
-![image-20240328144654998](images\image-20240328144654998.png)
+![image-20240328144654998](images/image-20240328144654998.png)
 
 ### 8.5.1：radosgw http高可用
 
@@ -3870,7 +3870,7 @@ root@ceph-mgr2:~# systemctl restart ceph-radosgw@rgw.ceph-mgr2.service
 
 验证：
 
-![image-20240328145447030](images\image-20240328145447030.png)
+![image-20240328145447030](images/image-20240328145447030.png)
 
 #### **8.5.1.2:实现高可用：**
 
@@ -3887,7 +3887,7 @@ listen ceph-rgw
 
 #### 8.5.1.3: 测试http反向代理
 
-![image-20240328150923277](images\image-20240328150923277.png)
+![image-20240328150923277](images/image-20240328150923277.png)
 
 ### 8.5.2:radosgw https****
 
@@ -3922,13 +3922,13 @@ root@ceph-mgr1:/etc/ceph/certs# systemctl restart ceph-radosgw@rgw.ceph-mgr1.ser
 
 #### 8.5.2.3: 验证https端口
 
-![image-20240328152047762](images\image-20240328152047762.png)
+![image-20240328152047762](images/image-20240328152047762.png)
 
 #### **8.5.2.4:验证访问**
 
 本地做域名解析
 
-![image-20240328153158562](images\image-20240328153158562.png)
+![image-20240328153158562](images/image-20240328153158562.png)
 
 ### 8.5.3: radosgw https **高可用**
 
@@ -3959,7 +3959,7 @@ root@pro:~# systemctl restart haproxy
 
 #### **8.5.3.4:测试访问**
 
-![image-20240328154019125](images\image-20240328154019125.png)
+![image-20240328154019125](images/image-20240328154019125.png)
 
 ## 8.6: 测试数据读写
 
@@ -4205,7 +4205,7 @@ root@ceph-deploy:~# s3cmd mb s3://images
 Bucket 's3://images/' created
 ```
 
-![image-20240328161407033](images\image-20240328161407033.png)
+![image-20240328161407033](images/image-20240328161407033.png)
 
 #### **8.5.6.2:验证上传数据**
 
@@ -4291,7 +4291,7 @@ weight 表示设备(device)的容量相对值，比如 1TB 对应 1.00，那么 
 
 Reweight 参数的目的是重新平衡 ceph 的 CRUSH 算法随机分配的 PG，默认的分配是概率上的均衡，即使 OSD 都是一样的磁盘空间也会产生一些 PG 分布不均匀的情况，此时可以通过调整 reweight 参数，让 ceph 集群立即重新平衡当前磁盘的 PG，以达到数据均衡分布的目的，REWEIGHT 是 PG 已经分配完成，要在 ceph 集群重新平衡 PG 的分布。
 
-![image-20240328164644652](images\image-20240328164644652.png)
+![image-20240328164644652](images/image-20240328164644652.png)
 
 ### 9.1.2：修改WEIGHT并验证
 
@@ -4303,7 +4303,7 @@ reweighted item id 5 name 'osd.5' to 1.5 in crush map
 
 验证：
 
-![image-20240328165027561](images\image-20240328165027561.png)
+![image-20240328165027561](images/image-20240328165027561.png)
 
 ### 9.1.3：**修改** REWEIGHT **并验证**
 
@@ -4314,7 +4314,7 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph osd reweight 5 0.6
 reweighted osd.5 to 0.6 (9999)
 ```
 
-![image-20240328165654866](images\image-20240328165654866.png)
+![image-20240328165654866](images/image-20240328165654866.png)
 
 ## 9.2: crush运行图管理
 
@@ -4461,13 +4461,13 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph osd setcrushmap -i /tmp/ceph/newcrush
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph osd crush rule dump
 ```
 
-![image-20240328172834280](images\image-20240328172834280.png)
+![image-20240328172834280](images/image-20240328172834280.png)
 
 ## **9.3:crush 数据分类管理**
 
 Ceph crush 算法分配的 PG 的时候可以将 PG 分配到不同主机的 OSD 上，以实现以主机为单位的高可用，这也是默认机制，但是无法保证不同 PG 位于不同机柜或者机房的主机，如果要实现基于机柜或者是更高级的 IDC 等方式的数据高可用，而且也不能实现 A 项目的数据在 SSD，B 项目的数据在机械盘,如果想要实现此功能则需要导出 crush 运行图并手动编辑，之后再导入并覆盖原有的 crush 运行图。
 
-![image-20240328173331652](images\image-20240328173331652.png)
+![image-20240328173331652](images/image-20240328173331652.png)
 
 ### 9.3.1:**导出** cursh **运行图**
 
@@ -4646,7 +4646,7 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph osd setcrushmap -i /tmp/ceph/crushmap
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph osd crush rule dump
 ```
 
-![image-20240328192836695](images\image-20240328192836695.png)
+![image-20240328192836695](images/image-20240328192836695.png)
 
 ### 9.3.7:**测试创建存储池**
 
@@ -4661,7 +4661,7 @@ pool 'ssdpool' created
 cephadmin@ceph-deploy:~/ceph-cluster$ ceph pg ls-by-pool ssdpool | awk '{print $1,$2,$15}'
 ```
 
-![image-20240328193147390](images\image-20240328193147390.png)
+![image-20240328193147390](images/image-20240328193147390.png)
 
 # **十：**ceph dashboard **及监控**
 
@@ -4723,7 +4723,7 @@ https://github.com/inkscope/inkscope
 缺乏 Ceph 管理功能
 ```
 
-![image-20240329115103550](images\image-20240329115103550.png)
+![image-20240329115103550](images/image-20240329115103550.png)
 
 **Ceph-Dash：**
 
@@ -4803,7 +4803,7 @@ ceph-mgr 114351 ceph   41u  IPv4 462803      0t0  TCP ceph-mgr1.example.local:90
 
 ### 10.1.3:dashboard **访问验证**
 
-![image-20240329144311471](images\image-20240329144311471.png)
+![image-20240329144311471](images/image-20240329144311471.png)
 
 ### 10.1.4:**设置** dashboard **账户及密码**
 
@@ -4822,31 +4822,31 @@ Username and password updated
 
 #### **10.1.5.1:登录成功界面**
 
-![image-20240329144719759](images\image-20240329144719759.png)
+![image-20240329144719759](images/image-20240329144719759.png)
 
 #### **10.1.5.2:集群信息**
 
 **主机信息：**
 
-![image-20240329144844454](images\image-20240329144844454.png)
+![image-20240329144844454](images/image-20240329144844454.png)
 
 **监控信息：**
 
-![image-20240329144946566](images\image-20240329144946566.png)
+![image-20240329144946566](images/image-20240329144946566.png)
 
 **Ceph rbd 状态**
 
-![image-20240329145049244](images\image-20240329145049244.png)
+![image-20240329145049244](images/image-20240329145049244.png)
 
 **cephfs 状态**
 
-![image-20240329145137851](images\image-20240329145137851.png)
+![image-20240329145137851](images/image-20240329145137851.png)
 
 **Ceph 对对象存储：**
 
 监控对象存储需要配置监控用户，否则 dashboard 无法获取对象存储状态。
 
-![image-20240329145259829](images\image-20240329145259829.png)
+![image-20240329145259829](images/image-20240329145259829.png)
 
 ### 10.1.6:dashboard SSL
 
@@ -4882,9 +4882,9 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph mgr services
 
 #### **10.1.6.2:访问 dashboard**
 
-![image-20240329150105722](images\image-20240329150105722.png)
+![image-20240329150105722](images/image-20240329150105722.png)
 
-![image-20240329150138971](images\image-20240329150138971.png)
+![image-20240329150138971](images/image-20240329150138971.png)
 
 ## **10.2:通过 prometheus 监控 ceph 服务**
 
@@ -4900,11 +4900,11 @@ cephadmin@ceph-deploy:~/ceph-cluster$ ceph mgr module enable prometheus
 # mgr节点验证端口
 ```
 
-![image-20240329153703850](images\image-20240329153703850.png)
+![image-20240329153703850](images/image-20240329153703850.png)
 
 ### 10.2.2:  **验证** manager **数据**
 
-![image-20240329153819331](images\image-20240329153819331.png)
+![image-20240329153819331](images/image-20240329153819331.png)
 
 ### 10.2.3: :**配置** prometheus **采集数据**
 
@@ -4949,7 +4949,7 @@ scrape_configs:
 
 ### 10.2.4: 验证数据
 
-![image-20240329154925487](images\image-20240329154925487.png)
+![image-20240329154925487](images/image-20240329154925487.png)
 
 ## **10.3:通过 grafana 显示监控数据**
 
@@ -4964,21 +4964,21 @@ root@pro:/app# systemctl restart grafana-server
 
 ### 10.3.2:配置数据源
 
-![image-20240329155524362](images\image-20240329155524362.png)
+![image-20240329155524362](images/image-20240329155524362.png)
 
 ### 10.3.3：导入模板
 
 https://grafana.com/grafana/dashboards/5336 #ceph OSD
 
-![image-20240329155653925](images\image-20240329155653925.png)
+![image-20240329155653925](images/image-20240329155653925.png)
 
 https://grafana.com/grafana/dashboards/2842 #ceph cluser
 
-![image-20240329160011699](images\image-20240329160011699.png)
+![image-20240329160011699](images/image-20240329160011699.png)
 
 https://grafana.com/grafana/dashboards/5342 #ceph pools
 
-![image-20240329160147334](images\image-20240329160147334.png)
+![image-20240329160147334](images/image-20240329160147334.png)
 
 # **十一：**ceph **使用案例**
 
@@ -4988,7 +4988,7 @@ https://grafana.com/grafana/dashboards/5342 #ceph pools
 
 在kubernetes 1.13+版本后，可以通过`ceph-csi`将ceph块设备挂载到k8s的pod中。
 
-![image-20240403173649066](images\image-20240403173649066.png)
+![image-20240403173649066](images/image-20240403173649066.png)
 
 ### 10.1.2： 环境介绍
 
@@ -5227,7 +5227,7 @@ spec:
 $ kubectl apply -f rbd-pod-pvc.yaml
 ```
 
-![image-20240409111118021](images\image-20240409111118021.png)
+![image-20240409111118021](images/image-20240409111118021.png)
 
 ## 10.2: K8S使用ceph-csi持久化存储之ceph-fs
 
@@ -5339,7 +5339,7 @@ $ kubectl apply -f csi-cephfsplugin.yaml
 
 #### 10.2.2.8: 验证是否部署成功
 
-![image-20240409114547647](images\image-20240409114547647.png)
+![image-20240409114547647](images/image-20240409114547647.png)
 
 ### 10.2.3: 使用ceph-fs设备
 
@@ -5412,7 +5412,7 @@ kubectl apply -f storageclass.yaml
 kubectl get sc
 ```
 
-![image-20240409115454093](images\image-20240409115454093.png)
+![image-20240409115454093](images/image-20240409115454093.png)
 
 #### 10.2.3.3: 测试
 
@@ -5485,9 +5485,9 @@ kubectl apply -f deployment.yaml
 
 >测试测试在 pod 中添加数据检查另外一个 pod 是否可以看到
 
-![image-20240409115714235](images\image-20240409115714235.png)
+![image-20240409115714235](images/image-20240409115714235.png)
 
-![image-20240409115735070](images\image-20240409115735070.png)
+![image-20240409115735070](images/image-20240409115735070.png)
 
 ## 10.3： cephfs 和 ceph RBD 的对比情况
 
