@@ -1,13 +1,12 @@
 #!/bin/bash
 #
 #********************************************************************
-#Author:          wangxiaochun
-#QQ:              29308620
-#Date:            2020-07-22
+#Author:          wanglei
+#QQ:              353938339
+#Date:            2024-04-22
 #FileName：       install_redis.sh
-#URL:             http://www.magedu.com
 #Description:     The test script
-#Copyright (C):   2020 All rights reserved
+#Copyright (C):   2024 All rights reserved
 #********************************************************************
 
 #本脚本支持在线和离线安装
