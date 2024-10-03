@@ -1,6 +1,6 @@
 # 1 Web架构介绍
 
-![image-20240930091906348](images\image-20240930091906348.png)
+![image-20240930091906348](images/image-20240930091906348.png)
 
 # 2 HAProxy 简介
 
@@ -8,7 +8,7 @@
 
 阿里云SLB介绍 ：https://yq.aliyun.com/articles/1803
 
-![image-20240930092028997](images\image-20240930092028997.png)
+![image-20240930092028997](images/image-20240930092028997.png)
 
 ## 2.1 为什么使用负载均衡
 
@@ -65,13 +65,13 @@ HAProxy is a free, very fast and reliable solution offering high availability,
 load balancing, and proxying for TCP and HTTP-based applications.
 ```
 
-![image-20240930093114527](images\image-20240930093114527.png)
+![image-20240930093114527](images/image-20240930093114527.png)
 
 HAProxy是法国开发者 威利塔罗(Willy Tarreau) 在2000年使用C语言开发的一个开源软件，是一款具 备高并发(一万以上)、高性能的TCP和HTTP负载均衡器，支持基于cookie的持久性，自动故障切换，支 持正则表达式及web状态统计
 
 **历史版本**
 
-![image-20240930093330108](images\image-20240930093330108.png)
+![image-20240930093330108](images/image-20240930093330108.png)
 
 注意：生产建议下载LTS版本，一般为版本号以偶数尾号，比如：1.8,2.0, 2.4, 2.6 等
 
@@ -81,11 +81,11 @@ HAProxy是法国开发者 威利塔罗(Willy Tarreau) 在2000年使用C语言开
 
 企业版网址：https://www.haproxy.com/
 
-![image-20240930093651994](images\image-20240930093651994.png)
+![image-20240930093651994](images/image-20240930093651994.png)
 
 ### 2.4.2 社区版
 
-![image-20240930093740601](images\image-20240930093740601.png)
+![image-20240930093740601](images/image-20240930093740601.png)
 
 
 
@@ -93,7 +93,7 @@ HAProxy是法国开发者 威利塔罗(Willy Tarreau) 在2000年使用C语言开
 
 github：https://github.com/haproxy
 
-![image-20240930093836336](images\image-20240930093836336.png)
+![image-20240930093836336](images/image-20240930093836336.png)
 
 ### 2.4.3 版本对比
 
@@ -117,7 +117,7 @@ github：https://github.com/haproxy
 
 ### 2.4.4 HAProxy功能
 
-![image-20240930094408003](images\image-20240930094408003.png)
+![image-20240930094408003](images/image-20240930094408003.png)
 
 **支持功能**
 
@@ -135,7 +135,7 @@ SSL/TSL服务器
 通过特定的URI为授权用户提供详细的状态信息
 ```
 
-![image-20240930094510478](images\image-20240930094510478.png)
+![image-20240930094510478](images/image-20240930094510478.png)
 
 ```http
 支持http反向代理
@@ -157,7 +157,7 @@ UDP--目前不支持UDP协议
 
 **介绍HAProxy的基础安装及基础配置**
 
-![image-20240930094713158](images\image-20240930094713158.png)
+![image-20240930094713158](images/image-20240930094713158.png)
 
 内网IP地址划分：
 
@@ -171,11 +171,11 @@ UDP--目前不支持UDP协议
 
 ## 3.1 Ubuntu 包安装
 
-![image-20240930104334135](images\image-20240930104334135.png)
+![image-20240930104334135](images/image-20240930104334135.png)
 
 打开链接： https://haproxy.debian.net/ ，选择合适的版本，会自动出现下面安装提示
 
-![image-20240930104415477](images\image-20240930104415477.png)
+![image-20240930104415477](images/image-20240930104415477.png)
 
 范例：
 
@@ -446,17 +446,17 @@ root@ubutun2204-1:~# pstree -p| grep haproxy
 
 浏览器访问： `http://haproxy-server:9999/haproxy-status`
 
-![image-20240930120237463](images\image-20240930120237463.png)
+![image-20240930120237463](images/image-20240930120237463.png)
 
-![image-20240930120331511](images\image-20240930120331511.png)
+![image-20240930120331511](images/image-20240930120331511.png)
 
 # 4 HAProxy 基础配置
 
 官方帮助文档
 
-![image-20240930120523419](images\image-20240930120523419.png)
+![image-20240930120523419](images/image-20240930120523419.png)
 
-![image-20240930120623105](images\image-20240930120623105.png)
+![image-20240930120623105](images/image-20240930120623105.png)
 
 
 
@@ -657,7 +657,7 @@ listen   <name>   #将frontend和backend合并在一起配置，相对于front
 
 注意：name字段只能使用大小写字母，数字，‘-’(dash)，'_‘(underscore)，'.' (dot)和 ':'(colon)，并且严 格区分大小写
 
-![image-20240930150821631](images\image-20240930150821631.png)
+![image-20240930150821631](images/image-20240930150821631.png)
 
 ### 4.2.1 Proxies配置 defaults
 
@@ -1313,15 +1313,15 @@ Backend is using a static LB algorithm and only accepts weights '0%' and '100%'.
 
 Hash对象到后端服务器的映射关系：
 
-![image-20240930170913747](images\image-20240930170913747.png)
+![image-20240930170913747](images/image-20240930170913747.png)
 
 #### 5.4.1.2.2 一致性hash示意图
 
 后端服务器在线与离线的调度方式
 
-![image-20240930170949114](images\image-20240930170949114.png)
+![image-20240930170949114](images/image-20240930170949114.png)
 
-![image-20240930171003059](images\image-20240930171003059.png)
+![image-20240930171003059](images/image-20240930171003059.png)
 
 ##### 5.4.1.2.3 一致性hash配置示例
 
@@ -1646,9 +1646,9 @@ listen wanglei_web
 
 ### 6.1.3 验证 Cookie 信息
 
-![image-20241002171058670](images\image-20241002171058670.png)
+![image-20241002171058670](images/image-20241002171058670.png)
 
-![image-20241002171138215](images\image-20241002171138215.png)
+![image-20241002171138215](images/image-20241002171138215.png)
 
 
 
@@ -1722,7 +1722,7 @@ active or backup DOWN for maintenance (MAINT) #active或者backup服务器人为
 active or backup SOFT STOPPED for maintenance #active或者backup被人为软下线(人为将weight改成0)
 ```
 
-![image-20241002173507191](images\image-20241002173507191.png)
+![image-20241002173507191](images/image-20241002173507191.png)
 
 ### 6.2.4 Backend Server 信息说明
 
@@ -1770,7 +1770,7 @@ web服务器中需要记录客户端的真实IP地址，用于做访问统计、
 - 四层：IP+PORT转发
 - 七层：协议+内容交换
 
-![image-20241002174610053](images\image-20241002174610053.png)
+![image-20241002174610053](images/image-20241002174610053.png)
 
 #### 6.3.1.1 四层负载
 
@@ -1809,7 +1809,7 @@ listen wanglei_web
 
 抓包可以看到 `continuation` 信息中带有客户端的源IP
 
-![image-20241002181442597](images\image-20241002181442597.png)
+![image-20241002181442597](images/image-20241002181442597.png)
 
 范例: nginx 开启四层日志功能
 
@@ -2195,7 +2195,7 @@ root@ubutun2204-1:~# systemctl stop nginx.service
 
 查看到状态页，可以看到启用了七层检测功能：**LastChk字段：L7**
 
-![image-20241002210311128](images\image-20241002210311128.png)
+![image-20241002210311128](images/image-20241002210311128.png)
 
 ```bash
 # 后端服务器查看访问日志
@@ -2660,7 +2660,7 @@ http://docs.haproxy.org/3.0/configuration.html#7.4
 
 #### 6.8.9.1 预定义ACL
 
-![image-20241003133845909](images\image-20241003133845909.png)
+![image-20241003133845909](images/image-20241003133845909.png)
 
 #### 6.8.9.2 预定义ACL使用
 
@@ -2693,21 +2693,6 @@ backend php_hosts
    server web2 192.168.159.105:80 weight 1 check inter 1000 fall 3 rise 3
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## 6.9 自定义 HAProxy 错误界面
 
 对指定的报错进行重定向，进行优雅的显示错误页面
@@ -2716,7 +2701,7 @@ backend php_hosts
 
 默认情况下，所有后端服务器都down机后，会显示下面页面
 
-![image-20241002210557369](images\image-20241002210557369.png)
+![image-20241002210557369](images/image-20241002210557369.png)
 
 ### 6.9.1 基于自定义的错误页面文件
 
@@ -2786,7 +2771,7 @@ Content-Type:text/html;charset=utf-8
 
 将后端服务器down，可以观察到以下页面
 
-![image-20241002211726113](images\image-20241002211726113.png)
+![image-20241002211726113](images/image-20241002211726113.png)
 
 范例：启用 no option http-use-htx
 
@@ -2813,7 +2798,7 @@ root@ubutun2204-1:~# cat  /apps/haproxy/html/503.html
 #可以看到下面
 ```
 
-![image-20241002212413569](images\image-20241002212413569.png)
+![image-20241002212413569](images/image-20241002212413569.png)
 
 
 
@@ -2847,7 +2832,7 @@ defaults
 #浏览器访问http://haproxy/ 302自动跳转至百度页面
 ```
 
-![image-20241002212932604](images\image-20241002212932604.png)
+![image-20241002212932604](images/image-20241002212932604.png)
 
 ## 6.10 HAProxy 四层负载
 
@@ -2913,7 +2898,7 @@ root@ubutun2204-1:~# mysql -utest -p123456 -h192.168.159.103 -e 'select @@server
 +-------------+
 ```
 
-![image-20241003141124391](images\image-20241003141124391.png)
+![image-20241003141124391](images/image-20241003141124391.png)
 
 ### 6.10.2 ACL示例-四层访问控制
 
@@ -3123,9 +3108,9 @@ accept-ranges: bytes
 libidn/1.18 libssh2/1.4.2" "443" "https"
 ```
 
-![image-20241003144103269](images\image-20241003144103269.png)
+![image-20241003144103269](images/image-20241003144103269.png)
 
-![image-20241003144145890](images\image-20241003144145890.png)
+![image-20241003144145890](images/image-20241003144145890.png)
 
 # 7 本章重点总结
 
