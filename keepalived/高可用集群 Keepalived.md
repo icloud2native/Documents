@@ -76,7 +76,7 @@ MTTR:Mean Time To Restoration（ repair）平均恢复前时间，故障时间
 
   https://docs.redhat.com/zh_hans/documentation/red_hat_enterprise_linux/5/html/cluster_suite_overview/ch.gfscs.cluster-overview-cso
 
-![image-20241003152401592](images\image-20241003152401592.png)
+![image-20241003152401592](images/image-20241003152401592.png)
 
 - heartbeat：基于心跳监测实现服务高可用
 - pacemaker+corosync：资源管理与故障转移
@@ -99,7 +99,7 @@ https://wenku.baidu.com/view/dc0afaa6f524ccbff1218416.html
 https://wenku.baidu.com/view/281ae109ba1aa8114431d9d0.html
 ```
 
-![image-20241003152707633](images\image-20241003152707633.png)
+![image-20241003152707633](images/image-20241003152707633.png)
 
 #### 1.5.4.2 VRRP 相关术语
 
@@ -138,7 +138,7 @@ https://wenku.baidu.com/view/281ae109ba1aa8114431d9d0.html
 
 # 2 Keepalived 架构和安装
 
-![image-20241003153219441](images\image-20241003153219441.png)
+![image-20241003153219441](images/image-20241003153219441.png)
 
 ## 2.1 Keepalived 介绍
 
@@ -164,7 +164,7 @@ https://keepalived.org/doc/
 http://keepalived.org/documentation.html 
 ```
 
-![image-20241003153622488](images\image-20241003153622488.png)
+![image-20241003153622488](images/image-20241003153622488.png)
 
 
 
@@ -202,7 +202,7 @@ Keepalived <-- Parent process monitoring children
 
 ## 2.3 Keepalived 环境准备
 
-![image-20241003154059052](images\image-20241003154059052.png)
+![image-20241003154059052](images/image-20241003154059052.png)
 
 - 各节点时间必须同步：ntp, chrony
 - 关闭防火墙及SELinux
@@ -884,7 +884,7 @@ root@ka-1:~# tcpdump -i ens33 -nn host 224.0.0.18 -w vrrp.cap
 
 **VRRP 协议包构成**
 
-![image-20241005170912202](images\image-20241005170912202.png)
+![image-20241005170912202](images/image-20241005170912202.png)
 
 ### 3.1.4 脑裂
 
@@ -1246,7 +1246,7 @@ vrrp_instance VI_1 {
 root@ka-1:~# systemctl stop keepalived.service
 ```
 
-![image-20241005175250673](images\image-20241005175250673.png)
+![image-20241005175250673](images/image-20241005175250673.png)
 
 ## 3.5 实现 Master/Master 的 Keepalived 双主架构
 
@@ -1418,7 +1418,7 @@ root@ka-2:~# hostname -I
 
 ### 3.6.1 案例：三个节点的三主三从架构实现
 
-![image-20241005181934394](images\image-20241005181934394.png)
+![image-20241005181934394](images/image-20241005181934394.png)
 
 ```bash
 #第一个节点ka1配置：
@@ -1434,7 +1434,7 @@ virtual_router_id 2 , Vrrp instance 2 , BACKUP，优先级 80
 
 ### 3.6.2 案例：三个节点的三主六从架构实现
 
-![image-20241005182018444](images\image-20241005182018444.png)
+![image-20241005182018444](images/image-20241005182018444.png)
 
 ```bash
 #第一个节点ka1配置：
@@ -2703,7 +2703,7 @@ vrrp_instance VI_1 {
 
 ## 5.6 实战案例：实现 MySQL 双主模式的高可用
 
-![image-20241005194834369](images\image-20241005194834369.png)
+![image-20241005194834369](images/image-20241005194834369.png)
 
 ```bash
 #先实现MySQL的双主架构
@@ -2800,7 +2800,7 @@ vrrp_instance VI_1 {
 
 ## 5.7 实战案例：实现 Zabbix Server 的高可用
 
-![image-20241005195412208](images\image-20241005195412208.png)
+![image-20241005195412208](images/image-20241005195412208.png)
 
 ```bash
 #在两个Zabbix Server 使用下面相同的配置
@@ -2868,36 +2868,6 @@ vrrp_instance VI_1 {
    }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
